@@ -57,7 +57,7 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="mr-3">
-            <Link isExternal href="https://drive.google.com/drive/u/0/recent" aria-label="View Resume">
+            <Link isExternal href="https://drive.google.com/file/d/1qaTWczzKogJhQY00c0Fg0SDtQZG67egE/view?usp=sharing" aria-label="View Resume">
               <Button radius="full" size="sm">View Resume</Button>
             </Link>
           </div>
