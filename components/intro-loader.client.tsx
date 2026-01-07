@@ -55,7 +55,12 @@ export default function IntroLoader({
       } else {
         // finish
         setProgress(100);
-        setTimeout(() => onComplete?.(), 350);
+        setTimeout(() => {
+          try {
+            window.dispatchEvent(new Event("loaderComplete"));
+          } catch (e) {}
+          onComplete?.();
+        }, 350);
       }
     };
 
@@ -64,6 +69,9 @@ export default function IntroLoader({
     // Fallback: ensure loader finishes even if RAF loop stalls
     const finishTimeout = window.setTimeout(() => {
       setProgress(100);
+      try {
+        window.dispatchEvent(new Event("loaderComplete"));
+      } catch (e) {}
       onComplete?.();
     }, duration + 1200);
 
