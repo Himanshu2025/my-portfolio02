@@ -12,7 +12,7 @@ export default function FirstVisitLoader() {
 
       // Show loader on every visit/reload to the homepage
       if (isHome) {
-        setTimeout(() => setShow(true), 80);
+        setShow(true);
       }
     } catch (e) {
       // ignore

@@ -16,6 +16,12 @@ export default function IntroLoader({
   const controls = useAnimation();
 
   useEffect(() => {
+    // remove any server-rendered static loader immediately so the client animation can take over
+    try {
+      const staticEl = document.getElementById("initial-loader");
+      if (staticEl) staticEl.remove();
+    } catch (e) {}
+
     let start: number | null = null;
     let desired = 0;
     let actual = 0;

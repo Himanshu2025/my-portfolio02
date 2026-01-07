@@ -13,7 +13,24 @@ import AnimatedHeading from "@/components/animated-heading.client";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <>
+      {/* Server-rendered static overlay to prevent content flash before client mounts */}
+      <div id="initial-loader" className="fixed inset-0 z-50 flex items-center justify-center bg-black text-white">
+        <div className="w-full max-w-2xl px-6 py-12">
+          <div className="flex flex-col items-start gap-6">
+            <div className="space-y-1">
+              <h1 className="text-3xl md:text-5xl font-extrabold">Hi, I am Himanshu</h1>
+              <p className="text-lg text-default-300/80">Welcome — crafting scalable digital experiences</p>
+            </div>
+            <div className="w-full">
+              <div className="w-full h-2 bg-white/6 rounded-full overflow-hidden">
+                <div className="h-full bg-blue-600" style={{ width: "6%" }} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <div className="mt-8 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl">
           
@@ -96,5 +113,6 @@ export default function Home() {
         </div>
       </div>
     </section>
+    </>
   );
 }
