@@ -10,6 +10,7 @@ import {
   NavbarMenuItem,
 } from "@heroui/navbar";
 import { Link } from "@heroui/link";
+import { Button } from "@heroui/button";
 import NextLink from "next/link";
 import clsx from "clsx";
 
@@ -55,6 +56,11 @@ export const Navbar = () => {
               <GithubIcon className="text-default-500" />
             </Link>
           </div>
+          <div className="mr-3">
+            <Link isExternal href="https://drive.google.com/drive/u/0/recent" aria-label="View Resume">
+              <Button radius="full" size="sm">View Resume</Button>
+            </Link>
+          </div>
           <div className="ml-4">
             <ThemeSwitch />
           </div>
@@ -71,6 +77,11 @@ export const Navbar = () => {
             <LinkedInIcon className="text-default-500" />
           </Link>
         </div>
+        <div className="ml-2">
+          <Link isExternal href="https://drive.google.com/file/d/1qaTWczzKogJhQY00c0Fg0SDtQZG67egE/view?usp=sharing" aria-label="View Resume">
+            <Button radius="full" size="sm">View Resume</Button>
+          </Link>
+        </div>
         <div className="ml-3">
           <ThemeSwitch />
         </div>
@@ -79,5 +90,5 @@ export const Navbar = () => {
     </HeroUINavbar>
   );
 };
-    </HeroUINavbar>
+ 
 
