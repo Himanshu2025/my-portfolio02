@@ -57,6 +57,40 @@ export default function Home() {
               </Link>
               
             </div>
+              <div className="mt-4">
+                <h3 className="text-sm font-semibold mb-2">Tech I have been using in my recent work:</h3>
+                {(() => {
+                  const techs = [
+                    "TypeScript",
+                    "JavaScript",
+                    "Golang",
+                    "AWS",
+                    "React",
+                    "Next.js",
+                    "Node.js",
+                    "Python",
+                    "FastAPI",
+                  ];
+                  const mid = Math.ceil(techs.length / 2);
+                  const left = techs.slice(0, mid);
+                  const right = techs.slice(mid);
+
+                  return (
+                    <div className="flex gap-x-5">
+                      <ul className="list-disc pl-3 text-sm text-white marker:text-blue-500">
+                        {left.map((tech) => (
+                          <li key={tech} className="py-0.5">{tech}</li>
+                        ))}
+                      </ul>
+                      <ul className="list-disc pl-3 text-sm text-white marker:text-blue-500">
+                        {right.map((tech) => (
+                          <li key={tech} className="py-0.5">{tech}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })()}
+              </div>
           </HeroText>
           </div>
         </div>
