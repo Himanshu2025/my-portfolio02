@@ -86,7 +86,7 @@ export default function IntroLoader({
               <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
               <path d="M6 12h6l2-3" stroke="rgba(255,255,255,0.85)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <span className="text-default-300/70">Welcome,  preparing your session...</span>
+            <span className="text-default-300/70">Welcome, creating the ultimate web experience...</span>
           </div>
         </div>
       </motion.div>

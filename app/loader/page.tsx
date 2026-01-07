@@ -1,7 +1,5 @@
-import dynamic from "next/dynamic";
 import Head from "next/head";
-
-const IntroLoader = dynamic(() => import("@/components/intro-loader.client"), { ssr: false });
+import IntroLoader from "@/components/intro-loader.client";
 
 export default function LoaderPage() {
 	return (
