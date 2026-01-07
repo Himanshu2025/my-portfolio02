@@ -10,8 +10,8 @@ export default function FirstVisitLoader() {
     try {
       const isHome = window.location.pathname === "/";
       // Detect reload navigation (performance navigation API)
-      const navEntries = performance.getEntriesByType && performance.getEntriesByType("navigation");
-      const navType = (navEntries && navEntries[0] && navEntries[0].type) || (performance && (performance as any).navigation && (performance as any).navigation.type === 1 ? "reload" : "navigate");
+      const navEntries = typeof performance.getEntriesByType === "function" ? (performance.getEntriesByType("navigation") as PerformanceNavigationTiming[]) : [];
+      const navType = (navEntries && (navEntries[0] as PerformanceNavigationTiming | undefined)?.type) || ((performance as any).navigation && (performance as any).navigation.type === 1 ? "reload" : "navigate");
 
       // Show loader when user reloads the homepage
       if (isHome && navType === "reload") {
