@@ -15,10 +15,11 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { TwitterIcon, GithubIcon, LinkedInIcon, Logo } from "@/components/icons";
+import { GithubIcon, LinkedInIcon, Logo } from "@/components/icons";
 import { fontSans } from "@/config/fonts";
 
 export const Navbar = () => {
+
   return (
     <HeroUINavbar maxWidth="xl" position="sticky" className="sticky top-0 z-40">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -43,42 +44,40 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
+      {/* Desktop social + theme */}
       <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="LinkedIn" href={siteConfig.links.linkedin}>
-            <LinkedInIcon className="text-default-500"  />
-          </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
-          </Link>
-          <ThemeSwitch />
+        <NavbarItem className="hidden sm:flex items-center">
+          <div className="flex items-center gap-3 mr-3">
+            <Link isExternal aria-label="LinkedIn" href={siteConfig.links.linkedin}>
+              <LinkedInIcon className="text-default-500" />
+            </Link>
+            <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+              <GithubIcon className="text-default-500" />
+            </Link>
+          </div>
+          <div className="ml-4">
+            <ThemeSwitch />
+          </div>
         </NavbarItem>
       </NavbarContent>
 
+      {/* Mobile social + theme + menu toggle */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
-        <Link isExternal aria-label="LinkedIn" href={siteConfig.links.linkedin}>
-          <LinkedInIcon className="text-default-500" />
-        </Link>
-        <ThemeSwitch className="ml-2.5" />
+        <div className="flex items-center gap-3">
+          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
+            <GithubIcon className="text-default-500" />
+          </Link>
+          <Link isExternal aria-label="LinkedIn" href={siteConfig.links.linkedin}>
+            <LinkedInIcon className="text-default-500" />
+          </Link>
+        </div>
+        <div className="ml-3">
+          <ThemeSwitch />
+        </div>
         <NavbarMenuToggle />
       </NavbarContent>
-
-      <NavbarMenu>
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems?.map((item, index) => (
-            <NavbarMenuItem key={`${item.label}-${index}`}>
-              <Link href={item.href ?? "#"}>{item.label}</Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
-      </NavbarMenu>
     </HeroUINavbar>
   );
 };
+    </HeroUINavbar>
 

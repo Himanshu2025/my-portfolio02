@@ -27,7 +27,9 @@ export default function WorkExperienceCard({ work }: { work: WorkExperience }) {
               <div className="text-sm font-medium text-default-600">{work.role}</div>
             </div>
             {work.dateRange && (
-              <div className="flex-none text-sm text-default-600 whitespace-nowrap ml-4">{work.dateRange}</div>
+              <div className="flex-none min-w-[140px] text-sm text-default-600 text-right ml-4">
+                {work.dateRange}
+              </div>
             )}
           </div>
         </CardHeader>

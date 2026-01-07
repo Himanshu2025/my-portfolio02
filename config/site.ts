@@ -13,12 +13,8 @@ export const siteConfig = {
       href: "/projects",
     },
     {
-      label: "Work Experience",
+      label: "My work experience",
       href: "/work-experience",
-    },
-    {
-      label: "Tech",
-      href: "/tech",
     },
   ],
   navMenuItems: [
@@ -57,7 +53,6 @@ export const siteConfig = {
   ],
   links: {
     github: "https://github.com/Himanshu2025",
-    twitter: "https://twitter.com/hero_ui",
     linkedin:"https://www.linkedin.com/in/himanshu-kulkarni2025/"
   },
 };
