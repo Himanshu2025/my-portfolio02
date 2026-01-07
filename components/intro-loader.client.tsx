@@ -101,7 +101,7 @@ export default function IntroLoader({
                 style={{ width: `${progress}%`, transition: "width 220ms linear" }}
               />
             </div>
-            <div className="mt-2 text-xs text-default-300/70">Loading — {progress}%</div>
+            <div className="mt-2 text-xs text-default-300/70">Loading : {progress}%</div>
           </div>
 
           <div className="flex items-center gap-3 text-sm text-default-400">
