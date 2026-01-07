@@ -9,13 +9,9 @@ export default function FirstVisitLoader() {
   useEffect(() => {
     try {
       const isHome = window.location.pathname === "/";
-      // Detect reload navigation (performance navigation API)
-      const navEntries = typeof performance.getEntriesByType === "function" ? (performance.getEntriesByType("navigation") as PerformanceNavigationTiming[]) : [];
-      const navType = (navEntries && (navEntries[0] as PerformanceNavigationTiming | undefined)?.type) || ((performance as any).navigation && (performance as any).navigation.type === 1 ? "reload" : "navigate");
 
-      // Show loader when user reloads the homepage
-      if (isHome && navType === "reload") {
-        // small delay to allow the page to hydrate before showing overlay
+      // Show loader on every visit/reload to the homepage
+      if (isHome) {
         setTimeout(() => setShow(true), 80);
       }
     } catch (e) {
@@ -30,7 +26,7 @@ export default function FirstVisitLoader() {
       tagline={"Crafting scalable web experiences"}
       duration={3000}
       onComplete={() => {
-        // simply hide after completion; do not persist so it can show on future reloads
+        // Hide after completion; show again on next visit/reload
         setShow(false);
       }}
     />
