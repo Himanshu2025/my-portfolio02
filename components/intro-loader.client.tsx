@@ -61,7 +61,16 @@ export default function IntroLoader({
 
     raf = requestAnimationFrame(step);
 
-    return () => cancelAnimationFrame(raf);
+    // Fallback: ensure loader finishes even if RAF loop stalls
+    const finishTimeout = window.setTimeout(() => {
+      setProgress(100);
+      onComplete?.();
+    }, duration + 1200);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(finishTimeout);
+    };
   }, [controls, duration, onComplete]);
 
   return (
