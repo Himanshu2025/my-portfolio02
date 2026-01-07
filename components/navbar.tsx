@@ -87,6 +87,21 @@ export const Navbar = () => {
         </div>
         <NavbarMenuToggle />
       </NavbarContent>
+      {/* Mobile slide-down menu */}
+      <NavbarMenu className="sm:hidden">
+        {siteConfig.navItems.map((item) => (
+          <NavbarMenuItem key={item.href}>
+            <NextLink href={item.href} className="w-full block py-2">
+              {item.label}
+            </NextLink>
+          </NavbarMenuItem>
+        ))}
+        <NavbarMenuItem>
+          <Link isExternal href="https://drive.google.com/file/d/1qaTWczzKogJhQY00c0Fg0SDtQZG67egE/view?usp=sharing" aria-label="View Resume">
+            <Button radius="full" size="sm">View Resume</Button>
+          </Link>
+        </NavbarMenuItem>
+      </NavbarMenu>
     </HeroUINavbar>
   );
 };
