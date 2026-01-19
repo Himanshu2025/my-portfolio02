@@ -57,7 +57,7 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="mr-3">
-            <Link isExternal href="https://drive.google.com/file/d/1qaTWczzKogJhQY00c0Fg0SDtQZG67egE/view?usp=sharing" aria-label="View Resume">
+            <Link isExternal href="https://drive.google.com/file/d/1LR_QlVVI_maKzuYpLqXk_CBh_s0txN1D/view?usp=drive_link" aria-label="View Resume">
               <Button radius="full" size="sm">View Resume</Button>
             </Link>
           </div>
@@ -78,7 +78,7 @@ export const Navbar = () => {
           </Link>
         </div>
         <div className="ml-2">
-          <Link isExternal href="https://drive.google.com/file/d/1qaTWczzKogJhQY00c0Fg0SDtQZG67egE/view?usp=sharing" aria-label="View Resume">
+          <Link isExternal href="https://drive.google.com/file/d/1LR_QlVVI_maKzuYpLqXk_CBh_s0txN1D/view?usp=drive_link" aria-label="View Resume">
             <Button radius="full" size="sm">View Resume</Button>
           </Link>
         </div>
@@ -97,7 +97,7 @@ export const Navbar = () => {
           </NavbarMenuItem>
         ))}
         <NavbarMenuItem>
-          <Link isExternal href="https://drive.google.com/file/d/1qaTWczzKogJhQY00c0Fg0SDtQZG67egE/view?usp=sharing" aria-label="View Resume">
+          <Link isExternal href="https://drive.google.com/file/d/1LR_QlVVI_maKzuYpLqXk_CBh_s0txN1D/view?usp=drive_link" aria-label="View Resume">
             <Button radius="full" size="sm">View Resume</Button>
           </Link>
         </NavbarMenuItem>

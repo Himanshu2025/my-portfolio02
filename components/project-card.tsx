@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardBody } from "@heroui/card";
+import { GithubIcon } from "@/components/icons";
 
 export type Project = {
   title: string;
@@ -9,6 +10,7 @@ export type Project = {
   description: string;
   tech?: string[];
   demoLink?: string;
+  githubLink?: string;
   colorClass?: string;
   // allow string for flexibility when project data comes from different sources
   size?: "sm" | "md" | "lg" | string;
@@ -85,33 +87,32 @@ export default function ProjectCard({ project }: { project: Project }) {
 
                 const btnClass = `inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md ${buttonBg} ${buttonText} dark:text-default-800 hover:opacity-95`;
 
-                if (project.demoLink) {
-                  return (
-                    <div className="mt-4 flex items-center gap-3">
+                return (
+                  <div className="mt-4 flex items-center gap-3">
+                    {project.githubLink && (
+                      <a href={project.githubLink} target="_blank" rel="noreferrer" className={btnClass}>
+                        <GithubIcon className="w-4 h-4" />
+                        <span>Source</span>
+                      </a>
+                    )}
+
+                    {project.demoLink && (
                       <a href={project.demoLink} target="_blank" rel="noreferrer" className={btnClass}>
                         View Demo
                       </a>
-                      {project.password && (
-                        <span className="text-sm text-default-600">Password: <strong className="ml-1">{project.password}</strong></span>
-                      )}
-                    </div>
-                  );
-                }
+                    )}
 
-                if (project.liveLink) {
-                  return (
-                    <div className="mt-4 flex items-center gap-3">
+                    {project.liveLink && (
                       <a href={project.liveLink} target="_blank" rel="noreferrer" className={btnClass}>
                         Live Site
                       </a>
-                      {project.password && (
-                        <span className="text-sm text-default-600">Password: <strong className="ml-1">{project.password}</strong></span>
-                      )}
-                    </div>
-                  );
-                }
+                    )}
 
-                return null;
+                    {project.password && (
+                      <span className="text-sm text-default-600">Password: <strong className="ml-1">{project.password}</strong></span>
+                    )}
+                  </div>
+                );
               })()}
             </CardBody>
           </Card>

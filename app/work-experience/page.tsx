@@ -3,6 +3,17 @@ import WorkExperienceCard, { type WorkExperience } from "@/components/work-exper
 
 const experiences: WorkExperience[] = [
 	{
+		company: "People for nature",
+		role: "Volunteer Frontend developer",
+		dateRange: "January 2026 - Present",
+		bullets: [
+			"Developed automated content management system using Next.js, WordPress (headless CMS), and GraphQL to dynamically manage 50+ categorized blog posts across 10+ conservation project pages",
+			"Reduced manual content management overhead by 70%, enabling conservation team to focus on core environmental initiatives rather than technical website maintenance",
+			"Worked with non-technical stakeholders to translate organizational needs into technical solutions, supporting research and conservation teams",
+		],
+		accent: "border-l-4 border-emerald-400",
+	},
+	{
 		company: "Monash University - Industry Experience",
 		role: "Full stack developer and Project Co-ordinator",
 		dateRange: "July 2025 - October 2025",

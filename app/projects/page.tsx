@@ -21,11 +21,21 @@ const projects: Project[] = [
     size: "lg",
   },
   {
+    title: "BirdTag - Serverless Wildlife Data Platform (Lambda, S3, DynamoDB, API Gateway, SNS)",
+    description:
+      "Built serverless media tagging system for Monash conservation research using Lambda, S3 event triggers, and DynamoDB with automated bird species detection. Developed query APIs achieving sub-300ms response times through DynamoDB GSI optimization and presigned S3 URLs. Engineered audio processing pipeline with Lambda containerization, ML inference, and FFmpeg format conversion for automated species identification across diverse media formats.",
+    tech: ["AWS Lambda", "S3", "DynamoDB", "API Gateway", "SNS", "FFmpeg", "Machine Learning", "Python", "Docker"],
+    colorClass: "border-l-4 border-teal-400",
+    size: "lg",
+    githubLink: "https://github.com/your-org/birdtag",
+  },
+  {
     title: "Mindzen - Mental health website",
     description:
       "Built full-stack mental health platform with Vue.js frontend and Firebase/Firestore backend, implementing OAuth authentication and serverless cloud functions. Engineered bulk email system, AI-powered chatbot integration, admin dashboard with calendar and booking features, and geolocation services with Google Maps API while ensuring WCAG accessibility.",
     tech: ["Vue.js", "Firebase", "Firestore", "JavaScript", "Google Maps"],
     demoLink: "https://www.youtube.com/watch?v=y8Y3enaspyY",
+    githubLink: "https://github.com/Himanshu2025/mindzen_webapp",
     colorClass: "border-l-4 border-sky-400",
     size: "lg",
   },
@@ -39,6 +49,7 @@ export default function ProjectsPage() {
           Projects
         </h2>
         <p className="text-default-600 max-w-3xl">Selected projects showcasing full-stack work, APIs, and scalable systems.</p>
+        <p className="text-sm text-default-500 mt-1">Private repositories are available to share upon request.</p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">

@@ -9,6 +9,7 @@ import clsx from "clsx";
 import HeroImage from "@/components/hero-image.client";
 import HeroText from "@/components/hero-text.client";
 import AnimatedHeading from "@/components/animated-heading.client";
+import TechList from "@/components/tech-list.client";
 
 
 export default function Home() {
@@ -31,16 +32,18 @@ export default function Home() {
             </div>
           <HeroText className="w-full">
             <AnimatedHeading text={"Hi, I am Himanshu!"} tag="h1" className={title()} stagger={0.03} />
-            <AnimatedHeading text={String(siteConfig.name)} tag="h2" className={subtitle()} stagger={0.02} />
+            {/* Removed duplicate name heading per request */}
             <p className="text-sm text-default-600">
               I build web applications and enjoy working across the full stack, from
               scratch to production. 
             </p>
-            <div className="flex gap-3 mt-2">
-             
-              <Link
-                isExternal
-                className={clsx(buttonStyles({ variant: "bordered", radius: "full" }), "flex items-center gap-2")}
+              <div className="flex gap-3 mt-2">
+                <Link
+                  isExternal
+                  className={clsx(
+                    buttonStyles({ variant: "bordered", radius: "full" }),
+                    "flex items-center gap-2",
+                  )}
                 href={siteConfig.links.github}
               >
                 <GithubIcon size={20} />
@@ -59,37 +62,7 @@ export default function Home() {
             </div>
               <div className="mt-4">
                 <h3 className="text-sm font-semibold mb-2">Tech I have been using in my recent work:</h3>
-                {(() => {
-                  const techs = [
-                    "TypeScript",
-                    "JavaScript",
-                    "Golang",
-                    "AWS",
-                    "React",
-                    "Next.js",
-                    "Node.js",
-                    "Python",
-                    "FastAPI",
-                  ];
-                  const mid = Math.ceil(techs.length / 2);
-                  const left = techs.slice(0, mid);
-                  const right = techs.slice(mid);
-
-                  return (
-                    <div className="flex gap-x-5">
-                      <ul className="list-disc pl-3 text-sm text-white marker:text-blue-500">
-                        {left.map((tech) => (
-                          <li key={tech} className="py-0.5">{tech}</li>
-                        ))}
-                      </ul>
-                      <ul className="list-disc pl-3 text-sm text-white marker:text-blue-500">
-                        {right.map((tech) => (
-                          <li key={tech} className="py-0.5">{tech}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  );
-                })()}
+                <TechList />
               </div>
           </HeroText>
           </div>
