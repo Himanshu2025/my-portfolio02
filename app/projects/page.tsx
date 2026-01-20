@@ -48,7 +48,6 @@ export default function ProjectsPage() {
         <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
           Projects
         </h2>
-        <p className="text-default-600 max-w-3xl">Selected projects showcasing full-stack work, APIs, and scalable systems.</p>
         <p className="text-sm text-default-500 mt-1">Private repositories are available to share upon request.</p>
       </div>
 
