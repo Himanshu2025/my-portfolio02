@@ -102,13 +102,6 @@ export default function ProjectCard({
       >
         {/* Top section: status dot + title */}
         <div className="px-5 pt-5 pb-0 sm:px-6 sm:pt-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span className={`inline-block h-2 w-2 rounded-full ${colors.dot}`} aria-hidden="true" />
-            <span className="text-[11px] font-medium uppercase tracking-widest text-default-400">
-              Project
-            </span>
-          </div>
-
           <h3 className="text-lg font-semibold leading-snug tracking-tight text-foreground text-balance">
             {project.title}
           </h3>
