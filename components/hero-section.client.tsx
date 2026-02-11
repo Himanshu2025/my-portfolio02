@@ -60,19 +60,10 @@ export default function HeroSection({
             avatarUrl="/Image_01.jpeg"
             name="Himanshu"
             title="Full Stack Developer"
-            handle="Himanshu2025"
-            status="Open to work"
-            contactText="Contact"
-            showUserInfo={true}
+            showUserInfo={false}
             enableTilt={true}
             behindGlowColor="rgba(100, 150, 255, 0.5)"
             behindGlowSize="60%"
-            onContactClick={() => {
-              window.open(
-                "https://www.linkedin.com/in/himanshu-kulkarni2025/",
-                "_blank"
-              );
-            }}
           />
         </motion.div>
 
