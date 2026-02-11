@@ -2,23 +2,31 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
 import clsx from "clsx";
 import { GithubIcon, LinkedInIcon } from "@/components/icons";
 import AnimatedHeading from "@/components/animated-heading.client";
 import TechList from "@/components/tech-list.client";
+import ProfileCard from "@/components/profile-card.client";
+import Threads from "@/components/threads-bg.client";
 import { title } from "@/components/primitives";
 
 /* stagger wrapper */
 const stagger = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
+  },
 };
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
 };
 
 export default function HeroSection({
@@ -29,27 +37,43 @@ export default function HeroSection({
   linkedinUrl: string;
 }) {
   return (
-    <section className="flex items-center min-h-[calc(100vh-10rem)] py-12 sm:py-16">
-      <div className="grid w-full grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
-        {/* ---- Photo ---- */}
+    <section className="relative flex items-center min-h-[calc(100vh-10rem)] py-12 sm:py-16">
+      {/* ---- Threads animated background ---- */}
+      <div className="pointer-events-none absolute inset-0 -mx-6 sm:-mx-8 overflow-hidden opacity-20 dark:opacity-30">
+        <Threads
+          color={[0.44, 0.59, 1]}
+          amplitude={1.2}
+          distance={0}
+          enableMouseInteraction={false}
+        />
+      </div>
+
+      <div className="relative z-10 grid w-full grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
+        {/* ---- ProfileCard ---- */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           className="flex justify-center md:order-1"
         >
-          <div className="relative aspect-square w-64 sm:w-80 md:w-[400px] lg:w-[460px] overflow-hidden rounded-2xl border border-default-200/50 bg-default-100/30 shadow-lg shadow-default-200/5">
-            <Image
-              src="/Image_01.jpeg"
-              alt="Himanshu Kulkarni"
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 768px) 280px, 460px"
-            />
-            {/* subtle overlay for dark mode blending */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent pointer-events-none" />
-          </div>
+          <ProfileCard
+            avatarUrl="/Image_01.jpeg"
+            name="Himanshu"
+            title="Full Stack Developer"
+            handle="Himanshu2025"
+            status="Open to work"
+            contactText="Contact"
+            showUserInfo={true}
+            enableTilt={true}
+            behindGlowColor="rgba(100, 150, 255, 0.5)"
+            behindGlowSize="60%"
+            onContactClick={() => {
+              window.open(
+                "https://www.linkedin.com/in/himanshu-kulkarni2025/",
+                "_blank"
+              );
+            }}
+          />
         </motion.div>
 
         {/* ---- Text content ---- */}
@@ -87,8 +111,12 @@ export default function HeroSection({
             <Link
               isExternal
               className={clsx(
-                buttonStyles({ variant: "bordered", radius: "full", size: "sm" }),
-                "flex items-center gap-2 text-sm",
+                buttonStyles({
+                  variant: "bordered",
+                  radius: "full",
+                  size: "sm",
+                }),
+                "flex items-center gap-2 text-sm"
               )}
               href={githubUrl}
             >
@@ -98,8 +126,12 @@ export default function HeroSection({
             <Link
               isExternal
               className={clsx(
-                buttonStyles({ variant: "bordered", radius: "full", size: "sm" }),
-                "flex items-center gap-2 text-sm",
+                buttonStyles({
+                  variant: "bordered",
+                  radius: "full",
+                  size: "sm",
+                }),
+                "flex items-center gap-2 text-sm"
               )}
               href={linkedinUrl}
             >

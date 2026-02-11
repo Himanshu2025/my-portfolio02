@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./profile-card.css";
 
 @config "../tailwind.config.js";
 
