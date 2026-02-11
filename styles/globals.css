@@ -1,3 +1,26 @@
 @import "tailwindcss";
 
-@config "../tailwind.config.js"
+@config "../tailwind.config.js";
+
+/* Smooth theme transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Prevent content shift when scrollbar appears */
+html {
+  overflow-y: scroll;
+}
+
+/* Selection colour */
+::selection {
+  background-color: hsl(0 0% 80% / 0.25);
+}
+
+.dark ::selection {
+  background-color: hsl(0 0% 100% / 0.12);
+}

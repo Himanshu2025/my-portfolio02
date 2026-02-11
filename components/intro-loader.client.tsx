@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function IntroLoader({
-  tagline = "Welcome — crafting scalable digital experiences",
-  duration = 3000,
+  tagline = "Full-stack developer",
+  duration = 2400,
   onComplete,
 }: {
   tagline?: string;
@@ -13,106 +13,127 @@ export default function IntroLoader({
   onComplete?: () => void;
 }) {
   const [progress, setProgress] = useState(0);
-  const controls = useAnimation();
+  const [phase, setPhase] = useState<"loading" | "exiting" | "done">("loading");
+
+  const finish = useCallback(() => {
+    if (phase !== "loading") return;
+    setProgress(100);
+    setPhase("exiting");
+    try {
+      window.dispatchEvent(new Event("loaderComplete"));
+    } catch (_) {}
+    // allow exit animation to play before unmounting
+    setTimeout(() => {
+      setPhase("done");
+      onComplete?.();
+    }, 700);
+  }, [phase, onComplete]);
 
   useEffect(() => {
-    // remove any server-rendered static loader immediately so the client animation can take over
+    // remove any SSR static loader
     try {
-      const staticEl = document.getElementById("initial-loader");
-      if (staticEl) staticEl.remove();
-    } catch (e) {}
+      document.getElementById("initial-loader")?.remove();
+    } catch (_) {}
 
     let start: number | null = null;
     let desired = 0;
     let actual = 0;
     let raf = 0;
 
-    // entrance animation
-    controls.start({ opacity: 1, y: 0, transition: { duration: 0.8 } });
+    const step = (ts: number) => {
+      if (!start) start = ts;
+      const elapsed = ts - start;
+      const frac = Math.min(1, elapsed / duration);
 
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const elapsed = timestamp - start;
+      // ease-out curve for natural feel
+      desired = Math.max(desired, (1 - Math.pow(1 - frac, 3)) * 100);
 
-      // base desired progress from time fraction
-      const timeFrac = Math.min(1, elapsed / duration);
-      desired = Math.max(desired, timeFrac * 100);
-
-      // occasional random spike to feel async
-      if (Math.random() < 0.02 && desired < 98) {
-        desired = Math.min(98, desired + 3 + Math.random() * 8);
-      }
-
-      // ease actual progress toward desired (smoothing)
-      actual += (desired - actual) * 0.12;
-
-      // small jitter to avoid perfectly linear numbers
-      const display = Math.min(100, Math.round(actual + (Math.random() * 0.4)));
-      setProgress(display);
+      // smooth toward desired
+      actual += (desired - actual) * 0.15;
+      setProgress(Math.min(100, Math.round(actual)));
 
       if (elapsed < duration || actual < 99.5) {
         raf = requestAnimationFrame(step);
       } else {
-        // finish
         setProgress(100);
-        setTimeout(() => {
-          try {
-            window.dispatchEvent(new Event("loaderComplete"));
-          } catch (e) {}
-          onComplete?.();
-        }, 350);
+        // small pause before exit
+        setTimeout(() => finish(), 200);
       }
     };
 
     raf = requestAnimationFrame(step);
 
-    // Fallback: ensure loader finishes even if RAF loop stalls
-    const finishTimeout = window.setTimeout(() => {
-      setProgress(100);
-      try {
-        window.dispatchEvent(new Event("loaderComplete"));
-      } catch (e) {}
-      onComplete?.();
-    }, duration + 1200);
+    // safety fallback
+    const fallback = setTimeout(() => finish(), duration + 1500);
 
     return () => {
       cancelAnimationFrame(raf);
-      clearTimeout(finishTimeout);
+      clearTimeout(fallback);
     };
-  }, [controls, duration, onComplete]);
+  }, [duration, finish]);
+
+  if (phase === "done") return null;
+
+  const nameChars = "Himanshu".split("");
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black text-white">
-      <motion.div
-        initial={{ opacity: 0, y: 6 }}
-        animate={controls}
-        className="w-full max-w-2xl px-6 py-12"
-      >
-        <div className="flex flex-col items-start gap-6">
-          <div className="space-y-1">
-            <h1 className="text-3xl md:text-5xl font-extrabold">Hi, I am Himanshu</h1>
-            <p className="text-lg text-default-300/80">{tagline}</p>
-          </div>
-
-          <div className="w-full">
-            <div className="w-full h-2 bg-white/6 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-blue-600 shadow-md"
-                style={{ width: `${progress}%`, transition: "width 220ms linear" }}
-              />
+    <AnimatePresence>
+      {phase !== "done" && (
+        <motion.div
+          key="loader"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+        >
+          <div className="flex flex-col items-center gap-8 px-6">
+            {/* Name - letter stagger */}
+            <div className="flex items-baseline gap-[2px]">
+              {nameChars.map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.2 + i * 0.06,
+                    ease: "easeOut",
+                  }}
+                  className="text-4xl sm:text-5xl font-bold tracking-tight text-white"
+                >
+                  {char}
+                </motion.span>
+              ))}
             </div>
-            <div className="mt-2 text-xs text-default-300/70">Loading : {progress}%</div>
-          </div>
 
-          <div className="flex items-center gap-3 text-sm text-default-400">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-              <path d="M6 12h6l2-3" stroke="rgba(255,255,255,0.85)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span className="text-default-300/70">Welcome, creating the ultimate web experience...</span>
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="text-sm tracking-widest uppercase text-white/40"
+            >
+              {tagline}
+            </motion.p>
+
+            {/* Progress bar */}
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0.8 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="w-48 sm:w-64"
+            >
+              <div className="h-[2px] w-full overflow-hidden rounded-full bg-white/[0.06]">
+                <motion.div
+                  className="h-full bg-white/80"
+                  style={{ width: `${progress}%` }}
+                  transition={{ duration: 0.15, ease: "linear" }}
+                />
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </motion.div>
-    </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

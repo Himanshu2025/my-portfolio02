@@ -23,12 +23,9 @@ export default function FirstVisitLoader() {
 
   return (
     <IntroLoader
-      tagline={"Crafting scalable web experiences"}
-      duration={3000}
-      onComplete={() => {
-        // Hide after completion; show again on next visit/reload
-        setShow(false);
-      }}
+      tagline="Crafting scalable web experiences"
+      duration={2200}
+      onComplete={() => setShow(false)}
     />
   );
 }
