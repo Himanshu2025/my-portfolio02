@@ -70,7 +70,7 @@ const ProfileCardComponent = ({
 }: ProfileCardProps) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
-  const enterTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const enterTimerRef = useRef<number | null>(null);
   const leaveRafRef = useRef<number | null>(null);
 
   const tiltEngine = useMemo(() => {
@@ -209,10 +209,10 @@ const ProfileCardComponent = ({
 
       shell.classList.add("active");
       shell.classList.add("entering");
-      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
+      if (enterTimerRef.current) clearTimeout(enterTimerRef.current);
       enterTimerRef.current = window.setTimeout(() => {
         shell.classList.remove("entering");
-      }, ANIMATION_CONFIG.ENTER_TRANSITION_MS);
+      }, ANIMATION_CONFIG.ENTER_TRANSITION_MS) as unknown as number;
 
       const { x, y } = getOffsets(event, shell);
       tiltEngine.setTarget(x, y);
@@ -325,7 +325,7 @@ const ProfileCardComponent = ({
         "deviceorientation",
         deviceOrientationHandler
       );
-      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
+      if (enterTimerRef.current) clearTimeout(enterTimerRef.current);
       if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
       tiltEngine.cancel();
       shell.classList.remove("entering");
