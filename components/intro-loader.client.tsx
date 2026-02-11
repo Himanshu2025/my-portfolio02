@@ -76,7 +76,9 @@ export default function IntroLoader({
     };
   }, [duration, finish]);
 
-  if (phase === "done") return null;
+  if (phase === "done") {
+    return null;
+  }
 
   const nameChars = "Himanshu".split("");
 
