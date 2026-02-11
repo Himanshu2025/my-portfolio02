@@ -1,7 +1,7 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardHeader, CardBody } from "@heroui/card";
 import { GithubIcon } from "@/components/icons";
 
 export type Project = {
@@ -11,113 +11,179 @@ export type Project = {
   tech?: string[];
   demoLink?: string;
   githubLink?: string;
-  colorClass?: string;
-  // allow string for flexibility when project data comes from different sources
-  size?: "sm" | "md" | "lg" | string;
+  accent?: string;
   liveLink?: string;
   password?: string;
 };
 
-export default function ProjectCard({ project }: { project: Project }) {
+/* ---- small accent-colour lookup ---- */
+const ACCENT_MAP: Record<string, { border: string; dot: string; chip: string }> = {
+  emerald: {
+    border: "border-t-emerald-400",
+    dot: "bg-emerald-400",
+    chip: "bg-emerald-400/10 text-emerald-300 ring-emerald-400/20",
+  },
+  amber: {
+    border: "border-t-amber-400",
+    dot: "bg-amber-400",
+    chip: "bg-amber-400/10 text-amber-300 ring-amber-400/20",
+  },
+  teal: {
+    border: "border-t-teal-400",
+    dot: "bg-teal-400",
+    chip: "bg-teal-400/10 text-teal-300 ring-teal-400/20",
+  },
+  sky: {
+    border: "border-t-sky-400",
+    dot: "bg-sky-400",
+    chip: "bg-sky-400/10 text-sky-300 ring-sky-400/20",
+  },
+};
+
+const fallbackAccent = {
+  border: "border-t-default-400",
+  dot: "bg-default-400",
+  chip: "bg-default-100 text-default-600 ring-default-200",
+};
+
+function resolveAccent(accent?: string) {
+  if (!accent) return fallbackAccent;
+  return ACCENT_MAP[accent] ?? fallbackAccent;
+}
+
+/* ---- external-link arrow icon ---- */
+function ArrowUpRight({ className }: { className?: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02, y: -4 }}
-      transition={{ duration: 0.35 }}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
     >
-      {/* compute size and accent */}
-      {(() => {
-        const sizeClass = project.size === "lg" ? "p-6 md:p-8" : project.size === "sm" ? "p-3" : "p-4";
-        const accent = project.colorClass ? project.colorClass : "";
-        const cardClass = `w-full ${sizeClass} shadow-sm hover:shadow-lg transition-shadow ${accent}`;
+      <path
+        fillRule="evenodd"
+        d="M4.22 11.78a.75.75 0 0 1 0-1.06L9.44 5.5H5.75a.75.75 0 0 1 0-1.5h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V6.56l-5.22 5.22a.75.75 0 0 1-1.06 0Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
 
-        return (
-          <Card className={cardClass}>
-            <CardHeader>
-              <h2 className="text-xl md:text-2xl font-semibold tracking-tight">{project.title}</h2>
-              {project.subtitle && (
-                <div className="text-sm text-default-600 mt-1">{project.subtitle}</div>
-              )}
-            </CardHeader>
-            <CardBody>
-              <p className="text-base leading-relaxed text-muted-foreground">{project.description}</p>
+export default function ProjectCard({
+  project,
+  index = 0,
+}: {
+  project: Project;
+  index?: number;
+}) {
+  const colors = resolveAccent(project.accent);
 
-              {project.tech && project.tech.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {project.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-full bg-default-100 text-default-800 dark:bg-default-800 dark:text-default-200 border border-default-200"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              )}
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="group relative flex flex-col h-full"
+    >
+      {/* Card wrapper */}
+      <div
+        className={`
+          relative flex flex-col h-full overflow-hidden rounded-2xl
+          border-t-2 ${colors.border}
+          border border-default-200/50
+          bg-default-50/50 dark:bg-default-50/[0.03]
+          backdrop-blur-sm
+          transition-all duration-300 ease-out
+          hover:border-default-300/70 hover:shadow-lg hover:shadow-default-200/10
+          dark:hover:shadow-none dark:hover:border-default-200/30
+          hover:-translate-y-1
+        `}
+      >
+        {/* Top section: status dot + title */}
+        <div className="px-5 pt-5 pb-0 sm:px-6 sm:pt-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span className={`inline-block h-2 w-2 rounded-full ${colors.dot}`} aria-hidden="true" />
+            <span className="text-[11px] font-medium uppercase tracking-widest text-default-400">
+              Project
+            </span>
+          </div>
 
-              {/* derive button bg from colorClass (e.g. border-amber-400 -> bg-amber-400) */}
-              {(() => {
-                // map known border color tokens to explicit Tailwind bg/text classes
-                const knownColorMap: Record<string, { bg: string; text: string }> = {
-                  "emerald-400": { bg: "bg-emerald-400", text: "text-default-800" },
-                  "amber-400": { bg: "bg-amber-400", text: "text-default-800" },
-                  "sky-400": { bg: "bg-sky-400", text: "text-default-800" },
-                  "indigo-400": { bg: "bg-indigo-400", text: "text-default-800" },
-                };
+          <h3 className="text-lg font-semibold leading-snug tracking-tight text-foreground text-balance">
+            {project.title}
+          </h3>
 
-                const colorToken = (project.colorClass || "")
-                  .split(" ")
-                  .find((c) => c.startsWith("border-") && !c.startsWith("border-l-"));
+          {project.subtitle && (
+            <p className="mt-1 text-sm text-default-500">{project.subtitle}</p>
+          )}
+        </div>
 
-                let buttonBg = "bg-foreground";
-                let buttonText = "text-background";
+        {/* Description */}
+        <div className="px-5 pt-3 sm:px-6 flex-1">
+          <p className="text-sm leading-relaxed text-default-500">
+            {project.description}
+          </p>
+        </div>
 
-                if (colorToken) {
-                  const key = colorToken.replace("border-", "");
-                  if (knownColorMap[key]) {
-                    buttonBg = knownColorMap[key].bg;
-                    buttonText = knownColorMap[key].text;
-                  } else {
-                    // fallback to a bg class constructed from token (may not be generated by Tailwind JIT)
-                    buttonBg = colorToken.replace("border-", "bg-");
-                    buttonText = "text-default-800";
-                  }
-                }
+        {/* Tech chips */}
+        {project.tech && project.tech.length > 0 && (
+          <div className="px-5 pt-4 sm:px-6 flex flex-wrap gap-1.5">
+            {project.tech.map((t) => (
+              <span
+                key={t}
+                className={`inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium ring-1 ring-inset ${colors.chip}`}
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
 
-                const btnClass = `inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium rounded-md ${buttonBg} ${buttonText} dark:text-default-800 hover:opacity-95`;
+        {/* Actions bar */}
+        <div className="mt-auto px-5 py-4 sm:px-6 sm:py-5 flex items-center gap-4 border-t border-default-100/60 dark:border-default-100/10">
+          {project.githubLink && (
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-default-500 transition-colors hover:text-foreground"
+            >
+              <GithubIcon className="h-4 w-4" />
+              <span>Source</span>
+            </a>
+          )}
 
-                return (
-                  <div className="mt-4 flex items-center gap-3">
-                    {project.githubLink && (
-                      <a href={project.githubLink} target="_blank" rel="noreferrer" className={btnClass}>
-                        <GithubIcon className="w-4 h-4" />
-                        <span>Source</span>
-                      </a>
-                    )}
+          {project.demoLink && (
+            <a
+              href={project.demoLink}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-medium text-default-500 transition-colors hover:text-foreground"
+            >
+              <span>Demo</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          )}
 
-                    {project.demoLink && (
-                      <a href={project.demoLink} target="_blank" rel="noreferrer" className={btnClass}>
-                        View Demo
-                      </a>
-                    )}
+          {project.liveLink && (
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-medium text-default-500 transition-colors hover:text-foreground"
+            >
+              <span>Live</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          )}
 
-                    {project.liveLink && (
-                      <a href={project.liveLink} target="_blank" rel="noreferrer" className={btnClass}>
-                        Live Site
-                      </a>
-                    )}
-
-                    {project.password && (
-                      <span className="text-sm text-default-600">Password: <strong className="ml-1">{project.password}</strong></span>
-                    )}
-                  </div>
-                );
-              })()}
-            </CardBody>
-          </Card>
-        );
-      })()}
-    </motion.div>
+          {project.password && (
+            <span className="ml-auto text-xs text-default-400">
+              pw: <code className="rounded bg-default-100 px-1 py-0.5 text-default-600 dark:bg-default-100/10 dark:text-default-300">{project.password}</code>
+            </span>
+          )}
+        </div>
+      </div>
+    </motion.article>
   );
 }
