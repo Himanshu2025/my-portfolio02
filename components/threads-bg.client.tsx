@@ -131,8 +131,8 @@ export default function Threads({
     if (!containerRef.current) return;
     const container = containerRef.current;
 
-    let gl: WebGLRenderingContext | null = null;
-    let program: WebGLProgram | null = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let gl: any = null;
     let canvas: HTMLCanvasElement | null = null;
 
     const init = async () => {
@@ -164,8 +164,6 @@ export default function Threads({
           uMouse: { value: new Float32Array([0.5, 0.5]) },
         },
       });
-      program = programObj as unknown as WebGLProgram;
-
       const mesh = new Mesh(gl, { geometry, program: programObj });
 
       function resize() {
