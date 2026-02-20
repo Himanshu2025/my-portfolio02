@@ -55,7 +55,7 @@ const experiences: WorkExperience[] = [
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-16 sm:py-20">
+    <section id="experience" className="py-12 sm:py-16 md:py-20">
       <div className="mb-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -405,31 +405,32 @@
 
 @media (max-width: 768px) {
   .pc-card {
-    height: 55svh;
-    max-height: 400px;
+    height: auto;
+    max-height: 320px;
   }
   .pc-details {
-    top: 2em;
+    top: 1.5em;
   }
   .pc-details h3 {
-    font-size: min(4svh, 2.5em);
+    font-size: min(3.5svh, 2em);
   }
   .pc-details p {
-    font-size: 14px;
+    font-size: 13px;
+    top: -6px;
   }
   .pc-user-info {
-    --ui-inset: 15px;
-    padding: 10px 12px;
+    --ui-inset: 12px;
+    padding: 8px 10px;
   }
   .pc-mini-avatar {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
   .pc-user-details {
-    gap: 10px;
+    gap: 8px;
   }
   .pc-handle {
-    font-size: 13px;
+    font-size: 12px;
   }
   .pc-status {
     font-size: 10px;
@@ -442,38 +443,38 @@
 
 @media (max-width: 480px) {
   .pc-card {
-    height: 50svh;
-    max-height: 340px;
+    height: auto;
+    max-height: 280px;
   }
   .pc-details {
-    top: 1.5em;
+    top: 1.2em;
   }
   .pc-details h3 {
-    font-size: min(3.5svh, 2em);
+    font-size: min(3svh, 1.6em);
   }
   .pc-details p {
-    font-size: 12px;
-    top: -8px;
+    font-size: 11px;
+    top: -6px;
   }
   .pc-user-info {
-    --ui-inset: 12px;
-    padding: 8px 10px;
+    --ui-inset: 10px;
+    padding: 6px 8px;
   }
   .pc-mini-avatar {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
   .pc-user-details {
-    gap: 8px;
+    gap: 6px;
   }
   .pc-handle {
-    font-size: 12px;
+    font-size: 11px;
   }
   .pc-status {
     font-size: 9px;
   }
   .pc-contact-btn {
-    padding: 5px 10px;
+    padding: 4px 8px;
     font-size: 10px;
     border-radius: 50px;
   }
