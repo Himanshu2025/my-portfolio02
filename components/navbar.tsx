@@ -16,7 +16,6 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon, LinkedInIcon, Logo } from "@/components/icons";
 import { fontSans } from "@/config/fonts";
 
@@ -132,15 +131,11 @@ export const Navbar = () => {
             </Button>
           </Link>
 
-          <div className="mx-1 h-5 w-px bg-default-200/60" aria-hidden="true" />
-
-          <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
 
       {/* ---- Right: compact controls + hamburger (mobile) ---- */}
       <NavbarContent className="sm:hidden basis-1 pl-2" justify="end">
-        <ThemeSwitch />
         <NavbarMenuToggle
           aria-label="Toggle navigation menu"
           className="text-default-500"
