@@ -56,7 +56,7 @@ const projects: Project[] = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-16 sm:py-20">
+    <section id="projects" className="py-12 sm:py-16 md:py-20">
       <div className="mb-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -43,7 +43,7 @@ export default function HeroSection({
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className="flex justify-center order-first md:order-1"
+          className="flex justify-center order-last md:order-1"
         >
           <ProfileCard
             avatarUrl="/Image_01.jpeg"
@@ -61,11 +61,11 @@ export default function HeroSection({
           variants={stagger}
           initial="hidden"
           animate="show"
-          className="flex flex-col gap-6 md:order-0"
+          className="flex flex-col gap-4 sm:gap-6 order-first md:order-0"
         >
           {/* Greeting */}
-          <motion.div variants={fadeUp}>
-            <span className="inline-block text-[11px] font-medium uppercase tracking-widest text-default-400 mb-2">
+          <motion.div variants={fadeUp} className="flex flex-col gap-3">
+            <span className="text-[11px] font-medium uppercase tracking-widest text-default-400">
               Welcome
             </span>
             <AnimatedHeading
