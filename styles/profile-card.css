@@ -405,8 +405,9 @@
 
 @media (max-width: 768px) {
   .pc-card {
-    height: auto;
     max-height: 320px;
+    width: 100%;
+    max-width: 240px;
   }
   .pc-details {
     top: 1.5em;
@@ -443,8 +444,9 @@
 
 @media (max-width: 480px) {
   .pc-card {
-    height: auto;
     max-height: 280px;
+    width: 100%;
+    max-width: 200px;
   }
   .pc-details {
     top: 1.2em;
