@@ -9,7 +9,6 @@ import { GithubIcon, LinkedInIcon } from "@/components/icons";
 import AnimatedHeading from "@/components/animated-heading.client";
 import TechList from "@/components/tech-list.client";
 import ProfileCard from "@/components/profile-card.client";
-import Threads from "@/components/threads-bg.client";
 import { title } from "@/components/primitives";
 
 /* stagger wrapper */
@@ -37,24 +36,14 @@ export default function HeroSection({
   linkedinUrl: string;
 }) {
   return (
-    <section className="relative flex items-center min-h-[calc(100vh-10rem)] py-12 sm:py-16">
-      {/* ---- Threads animated background ---- */}
-      <div className="pointer-events-none absolute inset-0 -mx-6 sm:-mx-8 overflow-hidden opacity-20 dark:opacity-30">
-        <Threads
-          color={[0.44, 0.59, 1]}
-          amplitude={1.2}
-          distance={0}
-          enableMouseInteraction={false}
-        />
-      </div>
-
-      <div className="relative z-10 grid w-full grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
+    <section id="home" className="relative flex flex-col justify-center py-8 sm:py-12 md:min-h-[calc(100vh-5rem)] md:py-16">
+      <div className="grid w-full grid-cols-1 items-center gap-8 sm:gap-10 md:grid-cols-2 md:gap-16 lg:gap-20">
         {/* ---- ProfileCard ---- */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className="flex justify-center md:order-1"
+          className="flex justify-center order-first md:order-1"
         >
           <ProfileCard
             avatarUrl="/Image_01.jpeg"
@@ -147,6 +136,49 @@ export default function HeroSection({
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll-down indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="hidden md:flex flex-col items-center gap-2 mt-auto pt-8"
+      >
+        <a
+          href="#projects"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }}
+          className="group flex flex-col items-center gap-2 text-default-400 transition-colors hover:text-default-600"
+          aria-label="Scroll to projects"
+        >
+          <span className="text-[10px] font-medium uppercase tracking-[0.2em]">
+            Scroll
+          </span>
+          <motion.span
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="opacity-60 group-hover:opacity-100 transition-opacity"
+            >
+              <path
+                d="M8 3v10m0 0l-3.5-3.5M8 13l3.5-3.5"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.span>
+        </a>
+      </motion.div>
     </section>
   );
 }

@@ -82,7 +82,8 @@ export default function ProjectCard({
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="group relative flex flex-col h-full"
     >
