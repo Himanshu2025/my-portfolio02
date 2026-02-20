@@ -12,7 +12,7 @@ import {
 import { Link } from "@heroui/link";
 import { Button } from "@heroui/button";
 import NextLink from "next/link";
-import { usePathname } from "next/navigation";
+import { useState, useCallback } from "react";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
@@ -26,16 +26,36 @@ function NavLink({
   href,
   label,
   isActive,
+  onClick,
 }: {
   href: string;
   label: string;
   isActive: boolean;
+  onClick?: () => void;
 }) {
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        const id = href.slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else if (id === "home") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        onClick?.();
+      }
+    },
+    [href, onClick],
+  );
+
   return (
-    <NextLink
+    <a
       href={href}
+      onClick={handleClick}
       className={clsx(
-        "relative px-1 py-1 text-sm font-medium transition-colors duration-200",
+        "relative px-1 py-1 text-sm font-medium transition-colors duration-200 cursor-pointer",
         "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out",
         isActive
           ? "text-foreground after:scale-x-100 after:bg-foreground"
@@ -43,17 +63,19 @@ function NavLink({
       )}
     >
       {label}
-    </NextLink>
+    </a>
   );
 }
 
 export const Navbar = () => {
-  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <HeroUINavbar
       maxWidth="xl"
       position="sticky"
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
       classNames={{
         base: "sticky top-0 z-50 border-b border-default-200/40 bg-background/70 backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-background/60",
         wrapper: "px-4 sm:px-6",
@@ -63,9 +85,13 @@ export const Navbar = () => {
       {/* ---- Left: brand + nav links ---- */}
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="max-w-fit list-none">
-          <NextLink
-            className="flex items-center gap-2 transition-opacity hover:opacity-80"
-            href="/"
+          <a
+            className="flex items-center gap-2 transition-opacity hover:opacity-80 cursor-pointer"
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             <Logo size={28} />
             <span
@@ -73,7 +99,7 @@ export const Navbar = () => {
             >
               Himanshu
             </span>
-          </NextLink>
+          </a>
         </NavbarBrand>
 
         {/* Desktop nav links */}
@@ -83,14 +109,14 @@ export const Navbar = () => {
               <NavLink
                 href={item.href}
                 label={item.label}
-                isActive={pathname === item.href}
+                isActive={false}
               />
             </NavbarItem>
           ))}
         </ul>
       </NavbarContent>
 
-      {/* ---- Right: social + resume + theme (desktop) ---- */}
+      {/* ---- Right: social + resume (desktop) ---- */}
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
@@ -130,11 +156,10 @@ export const Navbar = () => {
               Resume
             </Button>
           </Link>
-
         </NavbarItem>
       </NavbarContent>
 
-      {/* ---- Right: compact controls + hamburger (mobile) ---- */}
+      {/* ---- Right: hamburger (mobile) ---- */}
       <NavbarContent className="sm:hidden basis-1 pl-2" justify="end">
         <NavbarMenuToggle
           aria-label="Toggle navigation menu"
@@ -146,17 +171,23 @@ export const Navbar = () => {
       <NavbarMenu className="pt-6 pb-8 gap-0 bg-background/95 backdrop-blur-xl">
         {siteConfig.navItems.map((item) => (
           <NavbarMenuItem key={item.href}>
-            <NextLink
+            <a
               href={item.href}
-              className={clsx(
-                "block w-full py-3 text-base font-medium border-b border-default-100 transition-colors",
-                pathname === item.href
-                  ? "text-foreground"
-                  : "text-default-500 hover:text-foreground",
-              )}
+              onClick={(e) => {
+                e.preventDefault();
+                const id = item.href.slice(1);
+                const el = document.getElementById(id);
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth", block: "start" });
+                } else if (id === "home") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+                setIsMenuOpen(false);
+              }}
+              className="block w-full py-3 text-base font-medium border-b border-default-100 text-default-500 hover:text-foreground transition-colors"
             >
               {item.label}
-            </NextLink>
+            </a>
           </NavbarMenuItem>
         ))}
 
@@ -195,5 +226,3 @@ export const Navbar = () => {
     </HeroUINavbar>
   );
 };
- 
-
