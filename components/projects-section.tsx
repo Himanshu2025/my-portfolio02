@@ -52,6 +52,15 @@ const projects: Project[] = [
     githubLink: "https://github.com/Himanshu2025/mindzen_webapp",
     accent: "sky",
   },
+  {
+    title: "Freelance BillingOps",
+    subtitle: "Billing & Operations Platform",
+    description:
+      "Built a cloud-deployed billing and operations platform for freelancers to manage invoices, clients, and payments through a centralized system. Developed the backend using .NET 10 and ASP.NET Core Web API with Entity Framework Core, implementing secure authentication, rate limiting, and automated database migrations. Integrated Swagger/OpenAPI for API documentation and PDF invoice generation using QuestPDF.",
+    tech: [".NET", "C#", "ASP.NET Core", "Entity Framework", "Swagger"],
+    liveLink: "https://freelance-billingops-1.onrender.com/swagger/index.html",
+    accent: "violet",
+  },
 ];
 
 export default function ProjectsSection() {

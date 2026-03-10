@@ -14,6 +14,8 @@ import {
   SiDocker,
   SiGraphql,
   SiFastapi,
+  SiDotnet,
+  SiCsharp,
 } from "react-icons/si";
 
 const techs = [
