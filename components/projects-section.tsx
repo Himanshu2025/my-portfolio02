@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+
 import ProjectCard, { type Project } from "@/components/project-card";
 
 const projects: Project[] = [
@@ -52,17 +53,35 @@ const projects: Project[] = [
     githubLink: "https://github.com/Himanshu2025/mindzen_webapp",
     accent: "sky",
   },
+  {
+    title: "Freelance BillingOps",
+    subtitle: "Billing & Operations Platform",
+    description:
+      "Built Freelance BillingOps, a cloud-deployed billing and operations platform for freelancers to manage invoices, clients, and payments in a centralized system. Developed the backend using .NET 10 and ASP.NET Core Web API with Entity Framework Core, implementing secure authentication, rate limiting, and automated database migrations. Integrated Swagger/OpenAPI for API documentation and testing, enabling easier API exploration and developer usability. Implemented PDF invoice generation using QuestPDF and deployed the backend on Render, designing the API to support a modern React-based dashboard frontend.",
+    tech: [
+      ".NET 10",
+      "ASP.NET Core",
+      "Entity Framework Core",
+      "QuestPDF",
+      "Swagger/OpenAPI",
+      "Render",
+      "React",
+    ],
+    demoLink: "https://freelance-billingops-1.onrender.com/swagger/index.html",
+    githubLink: "https://github.com/Himanshu2025/freelance-billingops",
+    accent: "violet",
+  },
 ];
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20">
+    <section className="py-12 sm:py-16 md:py-20" id="projects">
       <div className="mb-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-80px" }}
+          whileInView={{ opacity: 1, y: 0 }}
         >
           <span className="inline-block text-[11px] font-medium uppercase tracking-widest text-default-400 mb-2">
             Selected Work
@@ -72,7 +91,7 @@ export default function ProjectsSection() {
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-default-500 max-w-lg">
             A selection of things I have built. Private repositories are available
-            to share upon request.
+            available to share upon request.
           </p>
         </motion.div>
       </div>

@@ -10,6 +10,8 @@ import {
   SiReact,
   SiNextdotjs,
   SiNodedotjs,
+  SiDotnet,
+  SiCsharp,
   SiPython,
   SiDocker,
   SiGraphql,
@@ -27,9 +29,14 @@ const techs = [
   "Python",
   "FastAPI",
   "GraphQL",
+  ".NET",
+  "C#",
 ] as const;
 
-const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+const iconMap: Record<
+  string,
+  React.ComponentType<{ className?: string; style?: React.CSSProperties }>
+> = {
   TypeScript: SiTypescript,
   JavaScript: SiJavascript,
   Golang: SiGo,
@@ -37,6 +44,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; style?: 
   React: SiReact,
   "Next.js": SiNextdotjs,
   "Node.js": SiNodedotjs,
+  ".NET": SiDotnet,
+  "C#": SiCsharp,
   Python: SiPython,
   FastAPI: SiFastapi,
   GraphQL: SiGraphql,
@@ -51,6 +60,8 @@ const colorMap: Record<string, string> = {
   React: "#61DAFB",
   "Next.js": "currentColor",
   "Node.js": "#83CD29",
+  ".NET": "#512BD4",
+  "C#": "#178600",
   Python: "#3776AB",
   FastAPI: "#009688",
   GraphQL: "#E10098",
@@ -73,19 +84,20 @@ const item = {
 export default function TechList() {
   return (
     <motion.div
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.4 }}
-      variants={container}
       className="flex flex-wrap gap-2"
+      initial="hidden"
+      variants={container}
+      viewport={{ once: true, amount: 0.4 }}
+      whileInView="show"
     >
       {techs.map((tech) => {
         const Icon = iconMap[tech];
+
         return (
           <motion.div
             key={tech}
-            variants={item}
             className="group inline-flex items-center gap-2 rounded-lg border border-default-200/50 bg-default-50/50 dark:bg-default-50/[0.03] px-3 py-2 text-sm transition-colors hover:border-default-300/70 hover:bg-default-100/50 dark:hover:bg-default-50/[0.06]"
+            variants={item}
           >
             {Icon && (
               <Icon

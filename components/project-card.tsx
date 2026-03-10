@@ -38,6 +38,11 @@ const ACCENT_MAP: Record<string, { border: string; dot: string; chip: string }> 
     dot: "bg-sky-400",
     chip: "bg-sky-400/10 text-sky-300 ring-sky-400/20",
   },
+  violet: {
+    border: "border-t-violet-400",
+    dot: "bg-violet-400",
+    chip: "bg-violet-400/10 text-violet-300 ring-violet-400/20",
+  },
 };
 
 const fallbackAccent = {
