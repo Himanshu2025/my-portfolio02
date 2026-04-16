@@ -16,6 +16,7 @@ import {
   SiDocker,
   SiGraphql,
   SiFastapi,
+  SiSupabase,
 } from "react-icons/si";
 
 const techs = [
@@ -23,6 +24,7 @@ const techs = [
   "JavaScript",
   "Golang",
   "AWS",
+  "Supabase",
   "React",
   "Next.js",
   "Node.js",
@@ -50,6 +52,7 @@ const iconMap: Record<
   FastAPI: SiFastapi,
   GraphQL: SiGraphql,
   Docker: SiDocker,
+  Supabase: SiSupabase,
 };
 
 const colorMap: Record<string, string> = {
@@ -66,6 +69,7 @@ const colorMap: Record<string, string> = {
   FastAPI: "#009688",
   GraphQL: "#E10098",
   Docker: "#2496ED",
+  Supabase: "#3ECF8E",
 };
 
 const container = {

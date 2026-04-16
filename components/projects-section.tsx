@@ -71,6 +71,15 @@ const projects: Project[] = [
     githubLink: "https://github.com/Himanshu2025/freelance-billingops",
     accent: "violet",
   },
+  {
+    title: "Rexfo",
+    subtitle: "SaaS Trading Companion",
+    description:
+      "Built and shipped a full SaaS product independently — a psychology-first trading companion for retail forex traders that intervenes before trades are placed to prevent emotionally-driven losses. Features a split-screen pre-trade checklist with live TradingView chart integration, an AI-powered Strategy Lab with backtesting, and a trade journal with discipline scoring. Integrated Stripe payments and Google OAuth; deployed on Vercel.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "Claude AI"],
+    liveLink: "https://www.rexfo.app",
+    accent: "rose",
+  },
 ];
 
 export default function ProjectsSection() {
@@ -90,7 +99,7 @@ export default function ProjectsSection() {
             Projects
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-default-500 max-w-lg">
-            A selection of things I have built. Private repositories are available
+            A selection of things I have built. Private repositories are
             available to share upon request.
           </p>
         </motion.div>
@@ -98,7 +107,7 @@ export default function ProjectsSection() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         {projects.map((p, i) => (
-          <ProjectCard key={p.title} project={p} index={i} />
+          <ProjectCard key={p.title} index={i} project={p} />
         ))}
       </div>
     </section>
