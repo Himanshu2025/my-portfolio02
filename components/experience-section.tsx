@@ -23,7 +23,7 @@ const experiences: WorkExperience[] = [
   {
     company: "People for Nature",
     role: "Volunteer Frontend Developer",
-    dateRange: "Jan 2026 - Present",
+    dateRange: "Jan 2026 - April 2026",
     bullets: [
       "Developed automated content management system using Next.js, WordPress (headless CMS), and GraphQL to dynamically manage 50+ categorized blog posts across 10+ conservation project pages.",
       "Reduced manual content management overhead by 70%, enabling conservation team to focus on core environmental initiatives rather than technical website maintenance.",
