@@ -5,7 +5,6 @@ import React from "react";
 import {
   SiTypescript,
   SiJavascript,
-  SiGo,
   SiAmazonaws,
   SiReact,
   SiNextdotjs,
@@ -55,10 +54,29 @@ const TanStackQueryIcon: React.FC<{ className?: string; style?: React.CSSPropert
   </svg>
 );
 
+const CursorIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
+  className,
+  style,
+}) => (
+  <svg viewBox="0 0 24 24" className={className} style={style} xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="3" width="18" height="18" rx="4" fill="currentColor" />
+    <path d="M8 7l6 5-6 5V7z" fill="#fff" />
+  </svg>
+);
+
+const ClaudeCodeIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
+  className,
+  style,
+}) => (
+  <svg viewBox="0 0 24 24" className={className} style={style} xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="10" fill="currentColor" />
+    <path d="M9 8h6v2H9zM9 12h6v2H9z" fill="#fff" />
+  </svg>
+);
+
 const techs = [
   "TypeScript",
   "JavaScript",
-  "Golang",
   "AWS",
   "Supabase",
   "TanStack Start",
@@ -82,13 +100,14 @@ const iconMap: Record<
 > = {
   TypeScript: SiTypescript,
   JavaScript: SiJavascript,
-  Golang: SiGo,
   AWS: SiAmazonaws,
   "TanStack Start": TanStackStartIcon,
   "TanStack Query": TanStackQueryIcon,
   React: SiReact,
   "Next.js": SiNextdotjs,
   "Node.js": SiNodedotjs,
+  Cursor: CursorIcon,
+  "Claude Code": ClaudeCodeIcon,
   Python: SiPython,
   FastAPI: SiFastapi,
   GraphQL: SiGraphql,
@@ -102,7 +121,6 @@ const iconMap: Record<
 const colorMap: Record<string, string> = {
   TypeScript: "#3178c6",
   JavaScript: "#f7df1e",
-  Golang: "#00ADD8",
   AWS: "#FF9900",
   React: "#61DAFB",
   "Next.js": "currentColor",
