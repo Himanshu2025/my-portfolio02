@@ -8,6 +8,19 @@ import WorkExperienceCard, {
 
 const experiences: WorkExperience[] = [
   {
+    company: "LaunchKey Lab",
+    role: "Full-Stack Developer",
+    dateRange: "Apr 2026 - Present",
+    bullets: [
+      "Shipped production features end-to-end across a TanStack Start application (TanStack Query, React, TypeScript), owning each feature from technical spec through to deployment.",
+      "Delivered 4 timeboxed spike builds (3–5 day prototypes) to validate technical feasibility of new product directions, giving stakeholders working demos that informed go/no-go decisions and avoided weeks of speculative build-out.",
+      "Translated Figma designs into pixel-accurate, responsive pages in React + TypeScript, partnering with design to ship UI that matched spec on first review.",
+      "Took part in designing the relational database schema with Prisma ORM, contributing data models and safe, reviewable migrations that established the foundations for new product modules.",
+      "Accelerated delivery by ~30% using AI-assisted workflows (Cursor, Claude Code), configuring custom hooks, rules, skills, and MCP integrations to standardise scaffolding, refactoring, and test generation, while maintaining quality through structured code review.",
+    ],
+    accent: "amber",
+  },
+  {
     company: "People for Nature",
     role: "Volunteer Frontend Developer",
     dateRange: "Jan 2026 - Present",

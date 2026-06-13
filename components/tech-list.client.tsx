@@ -10,13 +10,15 @@ import {
   SiReact,
   SiNextdotjs,
   SiNodedotjs,
-  SiDotnet,
-  SiCsharp,
+  
   SiPython,
   SiDocker,
   SiGraphql,
   SiFastapi,
   SiSupabase,
+  SiPrisma,
+  SiVercel,
+  SiAuth0,
 } from "react-icons/si";
 
 const techs = [
@@ -25,14 +27,17 @@ const techs = [
   "Golang",
   "AWS",
   "Supabase",
+  "TanStack Start",
+  "TanStack Query",
   "React",
   "Next.js",
   "Node.js",
+  "Prisma",
+  "Auth0",
+  "Vercel",
   "Python",
   "FastAPI",
   "GraphQL",
-  ".NET",
-  "C#",
 ] as const;
 
 const iconMap: Record<
@@ -46,13 +51,14 @@ const iconMap: Record<
   React: SiReact,
   "Next.js": SiNextdotjs,
   "Node.js": SiNodedotjs,
-  ".NET": SiDotnet,
-  "C#": SiCsharp,
   Python: SiPython,
   FastAPI: SiFastapi,
   GraphQL: SiGraphql,
   Docker: SiDocker,
   Supabase: SiSupabase,
+  Prisma: SiPrisma,
+  Vercel: SiVercel,
+  Auth0: SiAuth0,
 };
 
 const colorMap: Record<string, string> = {
@@ -63,13 +69,15 @@ const colorMap: Record<string, string> = {
   React: "#61DAFB",
   "Next.js": "currentColor",
   "Node.js": "#83CD29",
-  ".NET": "#512BD4",
-  "C#": "#178600",
+  
   Python: "#3776AB",
   FastAPI: "#009688",
   GraphQL: "#E10098",
   Docker: "#2496ED",
   Supabase: "#3ECF8E",
+  Prisma: "#2D9CDB",
+  Auth0: "#EB5424",
+  Vercel: "currentColor",
 };
 
 const container = {
