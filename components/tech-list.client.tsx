@@ -21,6 +21,40 @@ import {
   SiAuth0,
 } from "react-icons/si";
 
+const TanStackStartIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
+  className,
+  style,
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    className={className}
+    style={style}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="12" cy="12" r="10" fill="currentColor" />
+    <text x="12" y="16" textAnchor="middle" fontSize="9" fill="#fff" fontFamily="Inter, Arial, sans-serif">
+      TS
+    </text>
+  </svg>
+);
+
+const TanStackQueryIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
+  className,
+  style,
+}) => (
+  <svg
+    viewBox="0 0 24 24"
+    className={className}
+    style={style}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect x="2" y="2" width="20" height="20" rx="4" fill="currentColor" />
+    <text x="12" y="16" textAnchor="middle" fontSize="9" fill="#fff" fontFamily="Inter, Arial, sans-serif">
+      TQ
+    </text>
+  </svg>
+);
+
 const techs = [
   "TypeScript",
   "JavaScript",
@@ -35,6 +69,8 @@ const techs = [
   "Prisma",
   "Auth0",
   "Vercel",
+  "Cursor",
+  "Claude Code",
   "Python",
   "FastAPI",
   "GraphQL",
@@ -48,6 +84,8 @@ const iconMap: Record<
   JavaScript: SiJavascript,
   Golang: SiGo,
   AWS: SiAmazonaws,
+  "TanStack Start": TanStackStartIcon,
+  "TanStack Query": TanStackQueryIcon,
   React: SiReact,
   "Next.js": SiNextdotjs,
   "Node.js": SiNodedotjs,
@@ -68,8 +106,7 @@ const colorMap: Record<string, string> = {
   AWS: "#FF9900",
   React: "#61DAFB",
   "Next.js": "currentColor",
-  "Node.js": "#83CD29",
-  
+  "Node.js": "#83CD29",  
   Python: "#3776AB",
   FastAPI: "#009688",
   GraphQL: "#E10098",
@@ -78,6 +115,10 @@ const colorMap: Record<string, string> = {
   Prisma: "#2D9CDB",
   Auth0: "#EB5424",
   Vercel: "currentColor",
+  Cursor: "#7C3AED",
+  "Claude Code": "#FF6A00",
+  "TanStack Start": "#F97316",
+  "TanStack Query": "#2563EB",
 };
 
 const container = {
