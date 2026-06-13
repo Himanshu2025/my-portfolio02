@@ -20,7 +20,7 @@ import { GithubIcon, LinkedInIcon, Logo } from "@/components/icons";
 import { fontSans } from "@/config/fonts";
 
 const RESUME_URL =
-  "https://drive.google.com/file/d/1LR_QlVVI_maKzuYpLqXk_CBh_s0txN1D/view?usp=drive_link";
+  "https://docs.google.com/document/d/17Er7z2ExW3_guWwEDvZEyi75XlUb_7z5ndmOMtRT37M/edit?usp=sharing";
 
 function NavLink({
   href,
