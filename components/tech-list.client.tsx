@@ -20,79 +20,47 @@ import {
   SiAuth0,
 } from "react-icons/si";
 
-const TanStackStartIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
+const TanStackIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
   className,
   style,
 }) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    style={style}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="12" cy="12" r="10" fill="currentColor" />
-    <text x="12" y="16" textAnchor="middle" fontSize="9" fill="#fff" fontFamily="Inter, Arial, sans-serif">
-      TS
-    </text>
-  </svg>
-);
-
-const TanStackQueryIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
-  className,
-  style,
-}) => (
-  <svg
-    viewBox="0 0 24 24"
-    className={className}
-    style={style}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect x="2" y="2" width="20" height="20" rx="4" fill="currentColor" />
-    <text x="12" y="16" textAnchor="middle" fontSize="9" fill="#fff" fontFamily="Inter, Arial, sans-serif">
-      TQ
-    </text>
-  </svg>
+  <img src="/tanstack.png" alt="TanStack" className={className} style={style} width={16} height={16} />
 );
 
 const CursorIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
   className,
   style,
 }) => (
-  <svg viewBox="0 0 24 24" className={className} style={style} xmlns="http://www.w3.org/2000/svg">
-    <rect x="3" y="3" width="18" height="18" rx="4" fill="currentColor" />
-    <path d="M8 7l6 5-6 5V7z" fill="#fff" />
-  </svg>
+  <img src="/cursor-ai.png" alt="Cursor AI" className={className} style={style} width={16} height={16} />
 );
 
 const ClaudeCodeIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
   className,
   style,
 }) => (
-  <svg viewBox="0 0 24 24" className={className} style={style} xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="10" fill="currentColor" />
-    <path d="M9 8h6v2H9zM9 12h6v2H9z" fill="#fff" />
-  </svg>
+  <img src="/claude-code.png" alt="Claude Code" className={className} style={style} width={16} height={16} />
 );
 
-const techs = [
+// Ordered flat list (rendered in this sequence)
+const orderedTechs: string[] = [
   "TypeScript",
   "JavaScript",
-  "AWS",
-  "Supabase",
-  "TanStack Start",
-  "TanStack Query",
   "React",
   "Next.js",
+  "TanStack",
   "Node.js",
   "Prisma",
+  "FastAPI",
+  "GraphQL",
   "Auth0",
+  "Supabase",
   "Vercel",
+  "AWS",
+  "Docker",
   "Cursor",
   "Claude Code",
   "Python",
-  "FastAPI",
-  "GraphQL",
-] as const;
+];
 
 const iconMap: Record<
   string,
@@ -101,8 +69,7 @@ const iconMap: Record<
   TypeScript: SiTypescript,
   JavaScript: SiJavascript,
   AWS: SiAmazonaws,
-  "TanStack Start": TanStackStartIcon,
-  "TanStack Query": TanStackQueryIcon,
+  "TanStack": TanStackIcon,
   React: SiReact,
   "Next.js": SiNextdotjs,
   "Node.js": SiNodedotjs,
@@ -135,8 +102,7 @@ const colorMap: Record<string, string> = {
   Vercel: "currentColor",
   Cursor: "#7C3AED",
   "Claude Code": "#FF6A00",
-  "TanStack Start": "#F97316",
-  "TanStack Query": "#2563EB",
+  "TanStack": "#F97316",
 };
 
 const container = {
@@ -161,7 +127,7 @@ export default function TechList() {
       viewport={{ once: true, amount: 0.4 }}
       whileInView="show"
     >
-      {techs.map((tech) => {
+      {orderedTechs.map((tech) => {
         const Icon = iconMap[tech];
 
         return (
@@ -173,9 +139,7 @@ export default function TechList() {
             {Icon && (
               <Icon
                 className="h-4 w-4 shrink-0"
-                style={{
-                  color: tech === "Next.js" ? undefined : colorMap[tech],
-                }}
+                style={{ color: tech === "Next.js" ? undefined : colorMap[tech] }}
               />
             )}
             <span className="text-default-600 dark:text-default-400 text-xs font-medium">
