@@ -10,8 +10,8 @@ export default function Home() {
         githubUrl={siteConfig.links.github}
         linkedinUrl={siteConfig.links.linkedin}
       />
-      <ProjectsSection />
       <ExperienceSection />
+      <ProjectsSection />
     </>
   );
 }

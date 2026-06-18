@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function LoaderPage() {
   return (
     <main>
-      <IntroLoader tagline="Crafting scalable web experiences" duration={3000} />
+      <IntroLoader tagline="building great web apps" duration={3000} />
     </main>
   );
 }

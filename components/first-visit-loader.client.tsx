@@ -23,7 +23,7 @@ export default function FirstVisitLoader() {
 
   return (
     <IntroLoader
-      tagline="Crafting scalable web experiences"
+      tagline="building great web apps"
       duration={2200}
       onComplete={() => setShow(false)}
     />
