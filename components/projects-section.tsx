@@ -7,6 +7,15 @@ import ProjectCard, { type Project } from "@/components/project-card";
 
 const projects: Project[] = [
   {
+    title: "Rexfo",
+    subtitle: "SaaS Trading Companion",
+    description:
+      "Built and shipped a full SaaS product independently — a psychology-first trading companion for retail forex traders that intervenes before trades are placed to prevent emotionally-driven losses. Features a split-screen pre-trade checklist with live TradingView chart integration, an AI-powered Strategy Lab with backtesting, and a trade journal with discipline scoring. Integrated Stripe payments and Google OAuth; deployed on Vercel.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "Claude AI"],
+    liveLink: "https://www.rexfo.app",
+    accent: "rose",
+  },
+  {
     title: "WeatherTogether",
     subtitle: "Climate Risk Web App",
     description:
@@ -70,15 +79,6 @@ const projects: Project[] = [
     demoLink: "https://freelance-billingops-1.onrender.com/swagger/index.html",
     githubLink: "https://github.com/Himanshu2025/freelance-billingops",
     accent: "violet",
-  },
-  {
-    title: "Rexfo",
-    subtitle: "SaaS Trading Companion",
-    description:
-      "Built and shipped a full SaaS product independently — a psychology-first trading companion for retail forex traders that intervenes before trades are placed to prevent emotionally-driven losses. Features a split-screen pre-trade checklist with live TradingView chart integration, an AI-powered Strategy Lab with backtesting, and a trade journal with discipline scoring. Integrated Stripe payments and Google OAuth; deployed on Vercel.",
-    tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "Claude AI"],
-    liveLink: "https://www.rexfo.app",
-    accent: "rose",
   },
 ];
 
