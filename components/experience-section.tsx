@@ -10,7 +10,7 @@ const experiences: WorkExperience[] = [
   {
     company: "LaunchKey Lab",
     role: "Full-Stack Developer",
-    dateRange: "Apr 2026 - Present",
+    dateRange: "Apr 2026 - Jun 2026",
     bullets: [
       "Shipped production features end-to-end across a TanStack Start application (TanStack Query, React, TypeScript), owning each feature from technical spec through to deployment.",
       "Delivered 4 timeboxed spike builds (3–5 day prototypes) to validate technical feasibility of new product directions, giving stakeholders working demos that informed go/no-go decisions and avoided weeks of speculative build-out.",

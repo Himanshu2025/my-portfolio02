@@ -11,7 +11,7 @@ const projects: Project[] = [
     subtitle: "SaaS Trading Companion",
     description:
       "Built and shipped a full SaaS product independently — a psychology-first trading companion for retail forex traders that intervenes before trades are placed to prevent emotionally-driven losses. Features a split-screen pre-trade checklist with live TradingView chart integration, an AI-powered Strategy Lab with backtesting, and a trade journal with discipline scoring. Integrated Stripe payments and Google OAuth; deployed on Vercel.",
-    tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "Claude AI"],
+    tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "Google OAuth"],
     liveLink: "https://www.rexfo.app",
     accent: "rose",
   },
