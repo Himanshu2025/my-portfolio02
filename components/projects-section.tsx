@@ -7,6 +7,15 @@ import ProjectCard, { type Project } from "@/components/project-card";
 
 const projects: Project[] = [
   {
+    title: "Crack On",
+    subtitle: "AI-Native Problem Discovery",
+    description:
+      "Built and shipped independently: an AI-native platform that surfaces and ranks the real problems Australians are actually complaining about, so founders can validate on evidence instead of hunches. Features an automated pipeline that harvests complaints from Reddit, Hacker News, RSS and ProductReview.com.au, uses an LLM to cluster raw noise into distinct problems, and scores each with a deterministic, reproducible \"Itch Score\" in code — gated by human review before anything publishes.",
+    tech: ["Next.js", "TypeScript", "LLM (Claude)", "Supabase"],
+    liveLink: "https://www.crackon.app",
+    accent: "indigo",
+  },
+  {
     title: "Rexfo",
     subtitle: "SaaS Trading Companion",
     description:
