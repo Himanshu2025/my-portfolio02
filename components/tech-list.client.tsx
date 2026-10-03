@@ -18,6 +18,10 @@ import {
   SiPrisma,
   SiVercel,
   SiAuth0,
+  SiPostgresql,
+  SiMicrosoftazure,
+  SiPlaywright,
+  SiTerraform,
 } from "react-icons/si";
 
 const TanStackIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({
@@ -50,13 +54,17 @@ const orderedTechs: string[] = [
   "TanStack",
   "Node.js",
   "Prisma",
+  "PostgreSQL",
   "FastAPI",
   "GraphQL",
   "Auth0",
   "Supabase",
   "Vercel",
   "AWS",
+  "Azure",
   "Docker",
+  "Terraform",
+  "Playwright",
   "Cursor",
   "Claude Code",
   "Python",
@@ -83,6 +91,10 @@ const iconMap: Record<
   Prisma: SiPrisma,
   Vercel: SiVercel,
   Auth0: SiAuth0,
+  PostgreSQL: SiPostgresql,
+  Azure: SiMicrosoftazure,
+  Terraform: SiTerraform,
+  Playwright: SiPlaywright,
 };
 
 const colorMap: Record<string, string> = {
@@ -103,6 +115,10 @@ const colorMap: Record<string, string> = {
   Cursor: "#7C3AED",
   "Claude Code": "#FF6A00",
   "TanStack": "#F97316",
+  PostgreSQL: "#4169E1",
+  Azure: "#0078D4",
+  Terraform: "#844FBA",
+  Playwright: "#2EAD33",
 };
 
 const container = {

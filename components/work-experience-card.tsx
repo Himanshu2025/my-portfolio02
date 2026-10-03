@@ -111,16 +111,20 @@ export default function WorkExperienceCard({
         </div>
 
         {/* Bullet points */}
-        <div className="px-5 pt-4 pb-5 sm:px-6 sm:pb-6">
-          <ul className="flex flex-col gap-2.5">
-            {work.bullets.map((b, i) => (
-              <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-default-500">
-                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-default-400" aria-hidden="true" />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {work.bullets.length > 0 ? (
+          <div className="px-5 pt-4 pb-5 sm:px-6 sm:pb-6">
+            <ul className="flex flex-col gap-2.5">
+              {work.bullets.map((b, i) => (
+                <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-default-500">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-default-400" aria-hidden="true" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div className="pb-5 sm:pb-6" />
+        )}
       </div>
     </motion.article>
   );
