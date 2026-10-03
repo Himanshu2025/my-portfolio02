@@ -3,13 +3,16 @@
 
 @config "../tailwind.config.js";
 
-/* Smooth theme transitions */
-html {
-  scroll-behavior: smooth;
+@theme {
+  --color-cover: #ffd500;
+  --color-ink: #0b0b0b;
+  --color-paper: #ffffff;
+  --color-ink-soft: #3b3b3b;
 }
 
-html.dark {
-  color-scheme: dark;
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 /* Prevent content shift when scrollbar appears */
@@ -17,11 +20,27 @@ html {
   overflow-y: scroll;
 }
 
-/* Selection colour */
-::selection {
-  background-color: hsl(0 0% 80% / 0.25);
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
 }
 
-.dark ::selection {
-  background-color: hsl(0 0% 100% / 0.12);
+::selection {
+  background-color: var(--color-cover);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+.bg-ink :focus-visible {
+  outline-color: var(--color-cover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

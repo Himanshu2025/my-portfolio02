@@ -24,7 +24,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "black",
+  themeColor: "#0b0b0b",
 };
 
 export default function RootLayout({
@@ -37,17 +37,15 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen text-foreground bg-background font-sans antialiased",
+          "min-h-screen bg-paper text-ink font-sans antialiased",
           fontSans.variable,
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark", forcedTheme: "dark" }}>
+        <Providers themeProps={{ attribute: "class", defaultTheme: "light", forcedTheme: "light" }}>
           <div className="relative flex min-h-screen flex-col">
             <Navbar />
             <FirstVisitLoader />
-            <main className="mx-auto w-full max-w-5xl flex-1 px-6 pt-8 sm:px-8 sm:pt-12">
-              {children}
-            </main>
+            <main className="w-full flex-1">{children}</main>
             <footer className="w-full py-6" aria-hidden="true" />
           </div>
         </Providers>
