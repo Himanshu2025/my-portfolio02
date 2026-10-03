@@ -1,228 +1,107 @@
 "use client";
 
-import {
-  Navbar as HeroUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@heroui/navbar";
-import { Link } from "@heroui/link";
-import { Button } from "@heroui/button";
-import NextLink from "next/link";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
-import { GithubIcon, LinkedInIcon, Logo } from "@/components/icons";
-import { fontSans } from "@/config/fonts";
 
 const RESUME_URL =
   "https://docs.google.com/document/d/17Er7z2ExW3_guWwEDvZEyi75XlUb_7z5ndmOMtRT37M/edit?usp=sharing";
 
-function NavLink({
-  href,
-  label,
-  isActive,
-  onClick,
-}: {
-  href: string;
-  label: string;
-  isActive: boolean;
-  onClick?: () => void;
-}) {
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>) => {
-      if (href.startsWith("#")) {
-        e.preventDefault();
-        const id = href.slice(1);
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else if (id === "home") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-        onClick?.();
-      }
-    },
-    [href, onClick],
-  );
-
-  return (
-    <a
-      href={href}
-      onClick={handleClick}
-      className={clsx(
-        "relative px-1 py-1 text-sm font-medium transition-colors duration-200 cursor-pointer",
-        "after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:ease-out",
-        isActive
-          ? "text-foreground after:scale-x-100 after:bg-foreground"
-          : "text-default-500 hover:text-foreground after:bg-foreground/60 hover:after:scale-x-100",
-      )}
-    >
-      {label}
-    </a>
-  );
-}
+const linkClass =
+  "font-stretch-condensed text-[13px] font-semibold uppercase tracking-[0.06em] text-paper/80 underline-offset-[6px] decoration-2 decoration-cover transition-colors hover:text-paper hover:underline";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const close = () => setIsMenuOpen(false);
 
   return (
-    <HeroUINavbar
-      maxWidth="xl"
-      position="sticky"
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-      classNames={{
-        base: "sticky top-0 z-50 border-b border-default-200/40 bg-background/70 backdrop-blur-xl backdrop-saturate-150 supports-[backdrop-filter]:bg-background/60",
-        wrapper: "px-4 sm:px-6",
-      }}
-      isBlurred={false}
-    >
-      {/* ---- Left: brand + nav links ---- */}
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="max-w-fit list-none">
-          <a
-            className="flex items-center gap-2 transition-opacity hover:opacity-80 cursor-pointer"
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          >
-            <Logo size={28} />
-            <span
-              className={`${fontSans.variable} font-sans text-base font-semibold tracking-tight text-foreground`}
-            >
-              Himanshu
-            </span>
-          </a>
-        </NavbarBrand>
+    <header className="sticky top-0 z-50 bg-ink text-paper">
+      <nav
+        aria-label="Main"
+        className="mx-auto flex h-12 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8"
+      >
+        <a
+          className="font-stretch-expanded text-[15px] font-black uppercase tracking-[-0.01em] text-paper"
+          href="#home"
+          onClick={close}
+        >
+          Himanshu Kulkarni
+        </a>
 
-        {/* Desktop nav links */}
-        <ul className="hidden lg:flex items-center gap-6 ml-8">
+        <ul className="hidden items-center gap-7 md:flex">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NavLink
-                href={item.href}
-                label={item.label}
-                isActive={false}
-              />
-            </NavbarItem>
+            <li key={item.href}>
+              <a className={linkClass} href={item.href}>
+                {item.label}
+              </a>
+            </li>
           ))}
         </ul>
-      </NavbarContent>
 
-      {/* ---- Right: social + resume (desktop) ---- */}
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="flex items-center gap-1">
-          <Link
-            isExternal
-            aria-label="LinkedIn"
-            href={siteConfig.links.linkedin}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-default-500 transition-colors hover:text-foreground hover:bg-default-100"
-          >
-            <LinkedInIcon size={20} />
-          </Link>
-          <Link
-            isExternal
-            aria-label="Github"
-            href={siteConfig.links.github}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-default-500 transition-colors hover:text-foreground hover:bg-default-100"
-          >
-            <GithubIcon size={20} />
-          </Link>
-
-          <div className="mx-2 h-5 w-px bg-default-200/60" aria-hidden="true" />
-
-          <Link
-            isExternal
-            href={RESUME_URL}
-            aria-label="View Resume"
-            className="no-underline"
-          >
-            <Button
-              radius="full"
-              size="sm"
-              variant="flat"
-              className="font-medium text-xs px-4"
+        <ul className="hidden items-center gap-5 md:flex">
+          <li>
+            <a className={linkClass} href={siteConfig.links.github} rel="noreferrer" target="_blank">
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a className={linkClass} href={siteConfig.links.linkedin} rel="noreferrer" target="_blank">
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              className="font-stretch-condensed inline-flex h-8 items-center bg-cover px-3 text-[13px] font-bold uppercase tracking-[0.06em] text-ink transition-colors hover:bg-paper"
+              href={RESUME_URL}
+              rel="noreferrer"
+              target="_blank"
             >
               Resume
-            </Button>
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-
-      {/* ---- Right: hamburger (mobile) ---- */}
-      <NavbarContent className="sm:hidden basis-1 pl-2" justify="end">
-        <NavbarMenuToggle
-          aria-label="Toggle navigation menu"
-          className="text-default-500"
-        />
-      </NavbarContent>
-
-      {/* ---- Mobile slide-down menu ---- */}
-      <NavbarMenu className="pt-6 pb-8 gap-0 bg-background/95 backdrop-blur-xl">
-        {siteConfig.navItems.map((item) => (
-          <NavbarMenuItem key={item.href}>
-            <a
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                const id = item.href.slice(1);
-                const el = document.getElementById(id);
-                if (el) {
-                  el.scrollIntoView({ behavior: "smooth", block: "start" });
-                } else if (id === "home") {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-                setIsMenuOpen(false);
-              }}
-              className="block w-full py-3 text-base font-medium border-b border-default-100 text-default-500 hover:text-foreground transition-colors"
-            >
-              {item.label}
             </a>
-          </NavbarMenuItem>
-        ))}
+          </li>
+        </ul>
 
-        <div className="mt-6 flex items-center gap-3">
-          <Link
-            isExternal
-            aria-label="Github"
-            href={siteConfig.links.github}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-default-500 transition-colors hover:text-foreground hover:bg-default-100"
-          >
-            <GithubIcon size={22} />
-          </Link>
-          <Link
-            isExternal
-            aria-label="LinkedIn"
-            href={siteConfig.links.linkedin}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-default-500 transition-colors hover:text-foreground hover:bg-default-100"
-          >
-            <LinkedInIcon size={22} />
-          </Link>
-        </div>
+        <button
+          aria-controls="mobile-menu"
+          aria-expanded={isMenuOpen}
+          className="font-stretch-condensed text-[13px] font-bold uppercase tracking-[0.06em] text-paper md:hidden"
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          {isMenuOpen ? "Close" : "Menu"}
+        </button>
+      </nav>
 
-        <div className="mt-4">
-          <Link
-            isExternal
-            href={RESUME_URL}
-            aria-label="View Resume"
-            className="no-underline"
-          >
-            <Button radius="full" size="sm" variant="flat" className="font-medium px-5">
-              View Resume
-            </Button>
-          </Link>
-        </div>
-      </NavbarMenu>
-    </HeroUINavbar>
+      <div
+        className={clsx("border-t border-paper/15 md:hidden", !isMenuOpen && "hidden")}
+        id="mobile-menu"
+      >
+        <ul className="mx-auto flex max-w-7xl flex-col px-5 py-4">
+          {siteConfig.navItems.map((item) => (
+            <li key={item.href}>
+              <a
+                className="font-stretch-expanded block py-3 text-2xl font-black uppercase text-paper"
+                href={item.href}
+                onClick={close}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+            <a className={linkClass} href={siteConfig.links.github} rel="noreferrer" target="_blank">
+              GitHub
+            </a>
+            <a className={linkClass} href={siteConfig.links.linkedin} rel="noreferrer" target="_blank">
+              LinkedIn
+            </a>
+            <a className={linkClass} href={RESUME_URL} rel="noreferrer" target="_blank">
+              Resume
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
   );
 };

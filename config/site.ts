@@ -5,16 +5,16 @@ export const siteConfig = {
   description: "I am all-in on full-stack development.",
   navItems: [
     {
-      label: "Home",
-      href: "#home",
-    },
-    {
       label: "Experience",
       href: "#experience",
     },
     {
       label: "Projects",
       href: "#projects",
+    },
+    {
+      label: "Contact",
+      href: "#contact",
     },
   ],
   navMenuItems: [
