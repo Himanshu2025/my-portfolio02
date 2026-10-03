@@ -82,13 +82,8 @@ export default function HeroSection({
             className="max-w-lg text-sm leading-relaxed text-default-500"
           >
             I&apos;m a Melbourne-based full-stack developer and forward deployed
-            engineer working mainly in TypeScript across React, Next.js, and
-            TanStack, with Node.js, Python (FastAPI), and PostgreSQL on the
-            backend. I take features end to end, from Figma designs and
-            database schema to tested, deployed code on AWS, Azure, or Vercel.
-            I practise test-driven development, run end-to-end tests with
-            Playwright, and configure AI tooling like Claude Code hooks,
-            skills, and MCP servers into how I build.
+            engineer. I take features end to end, from design and database
+            schema to tested, deployed code.
           </motion.p>
 
           {/* Social links */}
