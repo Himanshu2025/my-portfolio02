@@ -5,9 +5,6 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 
-const RESUME_URL =
-  "https://docs.google.com/document/d/17Er7z2ExW3_guWwEDvZEyi75XlUb_7z5ndmOMtRT37M/edit?usp=sharing";
-
 const linkClass =
   "font-stretch-condensed text-[13px] font-semibold uppercase tracking-[0.06em] text-paper/80 underline-offset-[6px] decoration-2 decoration-cover transition-colors hover:text-paper hover:underline";
 
@@ -53,7 +50,7 @@ export const Navbar = () => {
           <li>
             <a
               className="font-stretch-condensed inline-flex h-8 items-center bg-cover px-3 text-[13px] font-bold uppercase tracking-[0.06em] text-ink transition-colors hover:bg-paper"
-              href={RESUME_URL}
+              href={siteConfig.links.resume}
               rel="noreferrer"
               target="_blank"
             >
@@ -96,7 +93,7 @@ export const Navbar = () => {
             <a className={linkClass} href={siteConfig.links.linkedin} rel="noreferrer" target="_blank">
               LinkedIn
             </a>
-            <a className={linkClass} href={RESUME_URL} rel="noreferrer" target="_blank">
+            <a className={linkClass} href={siteConfig.links.resume} rel="noreferrer" target="_blank">
               Resume
             </a>
           </li>

@@ -81,7 +81,7 @@ export default function IntroLoader({
     <AnimatePresence>
       <motion.div
         key="loader"
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+        className="fixed inset-0 z-[60] flex items-center justify-center bg-cover"
         exit={{ opacity: 0, y: -12 }}
         initial={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -92,7 +92,7 @@ export default function IntroLoader({
               <motion.span
                 key={i}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-4xl font-bold tracking-tight text-white sm:text-5xl"
+                className="font-stretch-expanded text-4xl font-black uppercase tracking-[-0.03em] text-ink sm:text-6xl"
                 initial={{ opacity: 0, y: 16 }}
                 transition={{
                   duration: 0.4,
@@ -107,7 +107,7 @@ export default function IntroLoader({
 
           <motion.p
             animate={{ opacity: 1 }}
-            className="text-sm uppercase tracking-widest text-white/40"
+            className="font-stretch-condensed text-sm font-bold uppercase tracking-[0.06em] text-ink/70"
             initial={{ opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
@@ -120,9 +120,9 @@ export default function IntroLoader({
             initial={{ opacity: 0, scaleX: 0.8 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <div className="h-[2px] w-full overflow-hidden rounded-full bg-white/[0.06]">
+            <div className="h-[3px] w-full overflow-hidden bg-ink/15">
               <motion.div
-                className="h-full bg-white/80"
+                className="h-full bg-ink"
                 style={{ width: `${progress}%` }}
                 transition={{ duration: 0.15, ease: "linear" }}
               />

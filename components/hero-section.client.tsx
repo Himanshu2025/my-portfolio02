@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimation, useReducedMotion } from "framer-motion";
 
-export const EMAIL = "hkulkarni927@gmail.com";
+import { siteConfig } from "@/config/site";
+
+const EMAIL = siteConfig.links.email;
 
 const TECH = [
   "TypeScript",

@@ -33,6 +33,9 @@ export const siteConfig = {
   ],
   links: {
     github: "https://github.com/Himanshu2025",
-    linkedin:"https://www.linkedin.com/in/himanshu-kulkarni2025/"
+    linkedin:"https://www.linkedin.com/in/himanshu-kulkarni2025/",
+    resume:
+      "https://docs.google.com/document/d/17Er7z2ExW3_guWwEDvZEyi75XlUb_7z5ndmOMtRT37M/edit?usp=sharing",
+    email: "hkulkarni927@gmail.com",
   },
 };

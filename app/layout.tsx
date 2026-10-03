@@ -46,7 +46,6 @@ export default function RootLayout({
             <Navbar />
             <FirstVisitLoader />
             <main className="w-full flex-1">{children}</main>
-            <footer className="w-full py-6" aria-hidden="true" />
           </div>
         </Providers>
       </body>
