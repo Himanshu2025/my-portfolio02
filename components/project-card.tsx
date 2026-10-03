@@ -1,8 +1,5 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
-import { GithubIcon } from "@/components/icons";
+import clsx from "clsx";
 
 export type Project = {
   title: string;
@@ -11,183 +8,97 @@ export type Project = {
   tech?: string[];
   demoLink?: string;
   githubLink?: string;
-  accent?: string;
   liveLink?: string;
   password?: string;
 };
 
-/* ---- small accent-colour lookup ---- */
-const ACCENT_MAP: Record<string, { border: string; dot: string; chip: string }> = {
-  emerald: {
-    border: "border-t-emerald-400",
-    dot: "bg-emerald-400",
-    chip: "bg-emerald-400/10 text-emerald-300 ring-emerald-400/20",
-  },
-  amber: {
-    border: "border-t-amber-400",
-    dot: "bg-amber-400",
-    chip: "bg-amber-400/10 text-amber-300 ring-amber-400/20",
-  },
-  teal: {
-    border: "border-t-teal-400",
-    dot: "bg-teal-400",
-    chip: "bg-teal-400/10 text-teal-300 ring-teal-400/20",
-  },
-  sky: {
-    border: "border-t-sky-400",
-    dot: "bg-sky-400",
-    chip: "bg-sky-400/10 text-sky-300 ring-sky-400/20",
-  },
-  violet: {
-    border: "border-t-violet-400",
-    dot: "bg-violet-400",
-    chip: "bg-violet-400/10 text-violet-300 ring-violet-400/20",
-  },
-  indigo: {
-    border: "border-t-indigo-400",
-    dot: "bg-indigo-400",
-    chip: "bg-indigo-400/10 text-indigo-300 ring-indigo-400/20",
-  },
-};
+function ProjectLinks({ project, size }: { project: Project; size: "lg" | "sm" }) {
+  const links = [
+    project.liveLink && { href: project.liveLink, label: "Live" },
+    project.demoLink && { href: project.demoLink, label: "Demo" },
+    project.githubLink && { href: project.githubLink, label: "Source" },
+  ].filter(Boolean) as { href: string; label: string }[];
 
-const fallbackAccent = {
-  border: "border-t-default-400",
-  dot: "bg-default-400",
-  chip: "bg-default-100 text-default-600 ring-default-200",
-};
-
-function resolveAccent(accent?: string) {
-  if (!accent) return fallbackAccent;
-  return ACCENT_MAP[accent] ?? fallbackAccent;
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      {links.map((link, i) => (
+        <a
+          key={link.label}
+          className={clsx(
+            "inline-flex items-center gap-1.5 font-stretch-condensed font-bold uppercase tracking-[0.06em] transition-colors",
+            size === "lg" ? "h-11 px-4 text-[15px]" : "h-9 px-3 text-[13px]",
+            i === 0
+              ? "bg-cover text-ink hover:bg-paper"
+              : "border-2 border-paper/70 text-paper hover:border-cover hover:text-cover",
+          )}
+          href={link.href}
+          rel="noreferrer"
+          target="_blank"
+        >
+          {link.label}
+          <span aria-hidden="true">↗</span>
+          <span className="sr-only">: {project.title} (opens in a new tab)</span>
+        </a>
+      ))}
+      {project.password && (
+        <span className="font-stretch-condensed text-[13px] font-semibold uppercase tracking-[0.06em] text-paper/70">
+          Password <code className="ml-1 bg-paper/10 px-1.5 py-0.5 font-mono normal-case tracking-normal text-paper">{project.password}</code>
+        </span>
+      )}
+    </div>
+  );
 }
 
-/* ---- external-link arrow icon ---- */
-function ArrowUpRight({ className }: { className?: string }) {
+function TechLine({ tech }: { tech?: string[] }) {
+  if (!tech?.length) return null;
+
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 16 16"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        d="M4.22 11.78a.75.75 0 0 1 0-1.06L9.44 5.5H5.75a.75.75 0 0 1 0-1.5h5.5a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0V6.56l-5.22 5.22a.75.75 0 0 1-1.06 0Z"
-        clipRule="evenodd"
-      />
-    </svg>
+    <p className="font-stretch-condensed text-[15px] font-semibold uppercase tracking-[0.04em] text-cover">
+      {tech.join(" / ")}
+    </p>
   );
 }
 
 export default function ProjectCard({
   project,
-  index = 0,
+  variant = "entry",
 }: {
   project: Project;
-  index?: number;
+  variant?: "opener" | "entry";
 }) {
-  const colors = resolveAccent(project.accent);
-
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group relative flex flex-col h-full"
-    >
-      {/* Card wrapper */}
-      <div
-        className={`
-          relative flex flex-col h-full overflow-hidden rounded-2xl
-          border-t-2 ${colors.border}
-          border border-default-200/50
-          bg-default-50/50 dark:bg-default-50/[0.03]
-          backdrop-blur-sm
-          transition-all duration-300 ease-out
-          hover:border-default-300/70 hover:shadow-lg hover:shadow-default-200/10
-          dark:hover:shadow-none dark:hover:border-default-200/30
-          hover:-translate-y-1
-        `}
-      >
-        {/* Top section: status dot + title */}
-        <div className="px-5 pt-5 pb-0 sm:px-6 sm:pt-6">
-          <h3 className="text-lg font-semibold leading-snug tracking-tight text-foreground text-balance">
+  if (variant === "opener") {
+    return (
+      <article className="grid grid-cols-12 gap-x-5 gap-y-6 border-t-[3px] border-paper py-10 sm:py-14">
+        <header className="col-span-12 lg:col-span-6">
+          <h3 className="font-stretch-expanded text-[clamp(2.75rem,7vw,6rem)] font-black uppercase leading-[0.86] tracking-[-0.035em] text-paper">
             {project.title}
           </h3>
-
           {project.subtitle && (
-            <p className="mt-1 text-sm text-default-500">{project.subtitle}</p>
+            <p className="mt-4 text-xl font-semibold text-cover sm:text-2xl">{project.subtitle}</p>
           )}
+        </header>
+        <div className="col-span-12 flex max-w-[62ch] flex-col gap-6 lg:col-span-6 lg:pt-3">
+          <p className="text-[17px] leading-relaxed text-paper/85">{project.description}</p>
+          <TechLine tech={project.tech} />
+          <ProjectLinks project={project} size="lg" />
         </div>
+      </article>
+    );
+  }
 
-        {/* Description */}
-        <div className="px-5 pt-3 sm:px-6 flex-1">
-          <p className="text-sm leading-relaxed text-default-500">
-            {project.description}
-          </p>
-        </div>
-
-        {/* Tech chips */}
-        {project.tech && project.tech.length > 0 && (
-          <div className="px-5 pt-4 sm:px-6 flex flex-wrap gap-1.5">
-            {project.tech.map((t) => (
-              <span
-                key={t}
-                className={`inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium ring-1 ring-inset ${colors.chip}`}
-              >
-                {t}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {/* Actions bar */}
-        <div className="mt-auto px-5 py-4 sm:px-6 sm:py-5 flex items-center gap-4 border-t border-default-100/60 dark:border-default-100/10">
-          {project.githubLink && (
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-default-500 transition-colors hover:text-foreground"
-            >
-              <GithubIcon className="h-4 w-4" />
-              <span>Source</span>
-            </a>
-          )}
-
-          {project.demoLink && (
-            <a
-              href={project.demoLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-default-500 transition-colors hover:text-foreground"
-            >
-              <span>Demo</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
-          )}
-
-          {project.liveLink && (
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-default-500 transition-colors hover:text-foreground"
-            >
-              <span>Live</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
-          )}
-
-          {project.password && (
-            <span className="ml-auto text-xs text-default-400">
-              pw: <code className="rounded bg-default-100 px-1 py-0.5 text-default-600 dark:bg-default-100/10 dark:text-default-300">{project.password}</code>
-            </span>
-          )}
-        </div>
+  return (
+    <article className="flex flex-col gap-4 border-t-2 border-paper/40 pt-6">
+      <header>
+        <h3 className="font-stretch-expanded text-2xl font-black uppercase leading-none tracking-[-0.02em] text-paper sm:text-3xl">
+          {project.title}
+        </h3>
+        {project.subtitle && <p className="mt-2 text-lg font-semibold text-cover">{project.subtitle}</p>}
+      </header>
+      <p className="max-w-[62ch] text-[15px] leading-relaxed text-paper/80">{project.description}</p>
+      <TechLine tech={project.tech} />
+      <div className="mt-auto pt-2">
+        <ProjectLinks project={project} size="sm" />
       </div>
-    </motion.article>
+    </article>
   );
 }

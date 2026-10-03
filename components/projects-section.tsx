@@ -1,8 +1,3 @@
-"use client";
-
-import React from "react";
-import { motion } from "framer-motion";
-
 import ProjectCard, { type Project } from "@/components/project-card";
 
 const projects: Project[] = [
@@ -13,7 +8,6 @@ const projects: Project[] = [
       "Built and shipped independently: an AI-native platform that surfaces and ranks the real problems Australians are actually complaining about, so founders can validate on evidence instead of hunches. Features an automated pipeline that harvests complaints from Reddit, Hacker News, RSS and ProductReview.com.au, uses an LLM to cluster raw noise into distinct problems, and scores each with a deterministic, reproducible \"Itch Score\" in code — gated by human review before anything publishes.",
     tech: ["Next.js", "TypeScript", "LLM (Claude)", "Supabase"],
     liveLink: "https://www.crackon.app",
-    accent: "indigo",
   },
   {
     title: "Rexfo",
@@ -22,7 +16,6 @@ const projects: Project[] = [
       "Built and shipped a full SaaS product independently — a psychology-first trading companion for retail forex traders that intervenes before trades are placed to prevent emotionally-driven losses. Features a split-screen pre-trade checklist with live TradingView chart integration, an AI-powered Strategy Lab with backtesting, and a trade journal with discipline scoring. Integrated Stripe payments and Google OAuth; deployed on Vercel.",
     tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "Google OAuth"],
     liveLink: "https://www.rexfo.app",
-    accent: "rose",
   },
   {
     title: "WeatherTogether",
@@ -32,7 +25,6 @@ const projects: Project[] = [
     tech: ["React", "TypeScript", "FastAPI", "Mapbox", "Tailwind CSS"],
     liveLink: "https://weathertogether.info",
     password: "ie0031",
-    accent: "emerald",
   },
   {
     title: "CloudPose",
@@ -42,7 +34,6 @@ const projects: Project[] = [
     tech: ["Python", "FastAPI", "Docker", "Kubernetes", "Locust"],
     demoLink:
       "https://drive.google.com/file/d/1Uf3bmZud00w5fJJYmsUsI_yxynXbFRVm/view",
-    accent: "amber",
   },
   {
     title: "BirdTag",
@@ -58,7 +49,6 @@ const projects: Project[] = [
       "Python",
       "Docker",
     ],
-    accent: "teal",
     githubLink: "https://github.com/your-org/birdtag",
   },
   {
@@ -69,7 +59,6 @@ const projects: Project[] = [
     tech: ["Vue.js", "Firebase", "Firestore", "JavaScript", "Google Maps"],
     demoLink: "https://www.youtube.com/watch?v=y8Y3enaspyY",
     githubLink: "https://github.com/Himanshu2025/mindzen_webapp",
-    accent: "sky",
   },
   {
     title: "Freelance BillingOps",
@@ -87,37 +76,34 @@ const projects: Project[] = [
     ],
     demoLink: "https://freelance-billingops-1.onrender.com/swagger/index.html",
     githubLink: "https://github.com/Himanshu2025/freelance-billingops",
-    accent: "violet",
   },
 ];
 
+const [openers, entries] = [projects.slice(0, 2), projects.slice(2)];
+
 export default function ProjectsSection() {
   return (
-    <section className="py-12 sm:py-16 md:py-20" id="projects">
-      <div className="mb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true, margin: "-80px" }}
-          whileInView={{ opacity: 1, y: 0 }}
-        >
-          <span className="inline-block text-[11px] font-medium uppercase tracking-widest text-default-400 mb-2">
-            Selected Work
-          </span>
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl text-balance">
+    <section className="bg-ink text-paper" id="projects">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+        <header className="grid grid-cols-12 gap-x-5 pb-10 sm:pb-14">
+          <h2 className="col-span-12 font-stretch-expanded text-[clamp(3rem,10vw,8rem)] font-black uppercase leading-[0.84] tracking-[-0.035em] text-cover lg:col-span-8">
             Projects
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-default-500 max-w-lg">
+          <p className="col-span-12 mt-4 max-w-[40ch] self-end text-lg leading-snug text-paper/80 lg:col-span-4 lg:mt-0">
             A selection of things I have built. Private repositories are
             available to share upon request.
           </p>
-        </motion.div>
-      </div>
+        </header>
 
-      <div className="grid gap-5 sm:grid-cols-2">
-        {projects.map((p, i) => (
-          <ProjectCard key={p.title} index={i} project={p} />
+        {openers.map((p) => (
+          <ProjectCard key={p.title} project={p} variant="opener" />
         ))}
+
+        <div className="grid gap-x-10 gap-y-12 border-t-[3px] border-paper pt-10 sm:grid-cols-2 sm:pt-14">
+          {entries.map((p) => (
+            <ProjectCard key={p.title} project={p} />
+          ))}
+        </div>
       </div>
     </section>
   );
