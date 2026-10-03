@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
+import { fontMono, fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 import FirstVisitLoader from "@/components/first-visit-loader.client";
 
@@ -24,7 +24,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#0b0b0b",
+  themeColor: "#0d1117",
 };
 
 export default function RootLayout({
@@ -39,6 +39,7 @@ export default function RootLayout({
         className={clsx(
           "min-h-screen bg-paper text-ink font-sans antialiased",
           fontSans.variable,
+          fontMono.variable,
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light", forcedTheme: "light" }}>

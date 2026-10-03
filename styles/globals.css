@@ -3,10 +3,15 @@
 @config "../tailwind.config.js";
 
 @theme {
-  --color-cover: #ffd500;
-  --color-ink: #0b0b0b;
   --color-paper: #ffffff;
-  --color-ink-soft: #3b3b3b;
+  --color-ink: #0d1117;
+  --color-soft: #4a5260;
+  --color-line: #e3e6ea;
+  --color-wash: #f3f4f6;
+  --color-tag: #2346ff;
+  --color-tag-wash: #e8edff;
+  --color-added: #0a7f3f;
+  --color-added-wash: #e3f6ea;
 }
 
 html {
@@ -25,17 +30,13 @@ body {
 }
 
 ::selection {
-  background-color: var(--color-cover);
+  background-color: var(--color-tag-wash);
   color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-ink);
+  outline: 2px solid var(--color-tag);
   outline-offset: 3px;
-}
-
-.bg-ink :focus-visible {
-  outline-color: var(--color-cover);
 }
 
 @media (prefers-reduced-motion: reduce) {
