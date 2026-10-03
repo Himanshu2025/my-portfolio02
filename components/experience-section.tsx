@@ -1,7 +1,3 @@
-"use client";
-
-import React from "react";
-import { motion } from "framer-motion";
 import WorkExperienceCard, {
   type WorkExperience,
 } from "@/components/work-experience-card";
@@ -12,7 +8,6 @@ const experiences: WorkExperience[] = [
     role: "Forward Deployed Engineer",
     dateRange: "Sep 2026 - Present",
     bullets: [],
-    accent: "emerald",
   },
   {
     company: "LaunchKey Lab",
@@ -25,7 +20,6 @@ const experiences: WorkExperience[] = [
       "Took part in designing the relational database schema with Prisma ORM, contributing data models and safe, reviewable migrations that established the foundations for new product modules.",
       "Accelerated delivery by ~30% using AI-assisted workflows (Cursor, Claude Code), configuring custom hooks, rules, skills, and MCP integrations to standardise scaffolding, refactoring, and test generation, while maintaining quality through structured code review.",
     ],
-    accent: "amber",
   },
   {
     company: "People for Nature",
@@ -36,7 +30,6 @@ const experiences: WorkExperience[] = [
       "Reduced manual content management overhead by 70%, enabling conservation team to focus on core environmental initiatives rather than technical website maintenance.",
       "Worked with non-technical stakeholders to translate organizational needs into technical solutions, supporting research and conservation teams.",
     ],
-    accent: "emerald",
   },
   {
     company: "Monash University",
@@ -47,7 +40,6 @@ const experiences: WorkExperience[] = [
       "Created modular APIs and reusable React components, making the codebase easier to maintain and cutting repetition by 30%.",
       "Set up CI/CD pipelines with testing and version control, which halved deployment time and improved build stability.",
     ],
-    accent: "amber",
   },
   {
     company: "AI SaaS Startup (Stealth)",
@@ -58,7 +50,6 @@ const experiences: WorkExperience[] = [
       "Implemented user activity logging and seamless frontend-backend data flow for better traceability and user experience.",
       "Worked in agile sprints with the product owner to clarify requirements, deliver MVPs on time, and incorporate feedback quickly.",
     ],
-    accent: "sky",
   },
   {
     company: "Jio Platforms Limited",
@@ -69,41 +60,27 @@ const experiences: WorkExperience[] = [
       "Collaborated with cross-functional teams to troubleshoot real-time issues, ensuring smooth delivery of high-traffic live events.",
       "Monitored streaming infrastructure and coordinated with technical teams to reduce incident response time, supporting reliable delivery of 100+ live channels to millions of concurrent viewers during IPL 2023.",
     ],
-    accent: "indigo",
   },
 ];
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-12 sm:py-16 md:py-20">
-      <div className="mb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="inline-block text-[11px] font-medium uppercase tracking-widest text-default-400 mb-2">
-            Career
-          </span>
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl text-balance">
+    <section className="bg-paper text-ink" id="experience">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
+        <header className="grid grid-cols-12 gap-x-5 pb-10 sm:pb-14">
+          <h2 className="col-span-12 font-stretch-expanded text-[clamp(2.5rem,7vw,5.5rem)] font-black uppercase leading-[0.88] tracking-[-0.035em] lg:col-span-8">
             Professional Experience
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-default-500 max-w-lg">
+          <p className="col-span-12 mt-4 max-w-[40ch] self-end text-lg leading-snug text-ink-soft lg:col-span-4 lg:mt-0">
             Roles, responsibilities, and impact across companies and projects.
           </p>
-        </motion.div>
-      </div>
+        </header>
 
-      <div className="flex flex-col">
-        {experiences.map((e, i) => (
-          <WorkExperienceCard
-            key={`${e.company}-${e.dateRange}`}
-            work={e}
-            index={i}
-            isLast={i === experiences.length - 1}
-          />
-        ))}
+        <div className="border-b-[3px] border-ink">
+          {experiences.map((e) => (
+            <WorkExperienceCard key={`${e.company}-${e.dateRange}`} work={e} />
+          ))}
+        </div>
       </div>
     </section>
   );
