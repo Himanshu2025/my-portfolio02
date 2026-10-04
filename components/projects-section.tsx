@@ -49,7 +49,6 @@ const projects: Project[] = [
       "Python",
       "Docker",
     ],
-    githubLink: "https://github.com/your-org/birdtag",
   },
   {
     title: "Mindzen",
@@ -79,31 +78,20 @@ const projects: Project[] = [
   },
 ];
 
-const [openers, entries] = [projects.slice(0, 2), projects.slice(2)];
-
 export default function ProjectsSection() {
   return (
-    <section className="bg-ink text-paper" id="projects">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-24">
-        <header className="grid grid-cols-12 gap-x-5 pb-10 sm:pb-14">
-          <h2 className="col-span-12 font-stretch-expanded text-[clamp(3rem,10vw,8rem)] font-black uppercase leading-[0.84] tracking-[-0.035em] text-cover lg:col-span-8">
-            Projects
-          </h2>
-          <p className="col-span-12 mt-4 max-w-[40ch] self-end text-lg leading-snug text-paper/80 lg:col-span-4 lg:mt-0">
-            A selection of things I have built. Private repositories are
-            available to share upon request.
-          </p>
-        </header>
+    <section aria-labelledby="projects-heading" className="scroll-mt-14 border-b border-line py-14" id="projects">
+      <h2 className="text-3xl font-extrabold tracking-[-0.02em]" id="projects-heading">
+        Projects
+      </h2>
+      <p className="mt-1.5 text-soft">
+        A selection of things I have built. Private repositories are available to share upon request.
+      </p>
 
-        {openers.map((p) => (
-          <ProjectCard key={p.title} project={p} variant="opener" />
+      <div className="mt-6 grid gap-5 md:grid-cols-2">
+        {projects.map((p, i) => (
+          <ProjectCard key={p.title} project={p} wide={projects.length % 2 === 1 && i === projects.length - 1} />
         ))}
-
-        <div className="grid gap-x-10 gap-y-12 border-t-[3px] border-paper pt-10 sm:grid-cols-2 sm:pt-14">
-          {entries.map((p) => (
-            <ProjectCard key={p.title} project={p} />
-          ))}
-        </div>
       </div>
     </section>
   );
