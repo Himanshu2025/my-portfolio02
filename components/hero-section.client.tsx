@@ -34,16 +34,16 @@ export default function HeroSection() {
             take features end to end, from design and database schema to tested, deployed code.
           </p>
 
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-7 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
             <a
-              className="inline-flex h-12 items-center gap-2 bg-ink px-5 text-[15px] font-semibold text-paper transition-colors hover:bg-tag"
+              className="col-span-2 inline-flex h-12 items-center justify-center gap-2 bg-ink px-5 text-[15px] font-semibold text-paper transition-colors hover:bg-tag"
               href={`mailto:${email}`}
             >
               <span aria-hidden="true">✉</span>
               {email}
             </a>
             <a
-              className="inline-flex h-12 items-center border-[1.5px] border-ink px-5 text-[15px] font-semibold transition-colors hover:bg-wash"
+              className="inline-flex h-12 items-center justify-center border-[1.5px] border-ink px-5 text-[15px] font-semibold transition-colors hover:bg-wash"
               href={github}
               rel="noreferrer"
               target="_blank"
@@ -51,7 +51,7 @@ export default function HeroSection() {
               GitHub
             </a>
             <a
-              className="inline-flex h-12 items-center border-[1.5px] border-ink px-5 text-[15px] font-semibold transition-colors hover:bg-wash"
+              className="inline-flex h-12 items-center justify-center border-[1.5px] border-ink px-5 text-[15px] font-semibold transition-colors hover:bg-wash"
               href={linkedin}
               rel="noreferrer"
               target="_blank"
