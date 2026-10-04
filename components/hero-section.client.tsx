@@ -18,7 +18,7 @@ export default function HeroSection() {
 
       <div className="mt-5 grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-start lg:gap-14">
         <div>
-          <p className="text-[clamp(4rem,9vw,8.5rem)] font-black leading-[0.9] tracking-[-0.04em] text-tag">
+          <p className="text-[clamp(3.25rem,7vw,6.5rem)] font-black leading-[0.9] tracking-[-0.04em] text-tag">
             <span className="mr-[0.06em]">v</span>
             {versionOf(current.dateRange).slice(1)}
           </p>

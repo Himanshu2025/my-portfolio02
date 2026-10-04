@@ -14,7 +14,7 @@ colors:
 typography:
   display:
     fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: "clamp(4rem, 9vw, 8.5rem)"
+    fontSize: "clamp(3.25rem, 7vw, 6.5rem)"
     fontWeight: 900
     lineHeight: 0.9
     letterSpacing: "-0.04em"
