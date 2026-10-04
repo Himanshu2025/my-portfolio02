@@ -31,6 +31,12 @@ const SiCursor: IconType = (props) => (
   </svg>
 );
 
+const SiClaudeCode: IconType = (props) => (
+  <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path d="M21 10.5h3v3h-3v3h-1.5v3H18v-3h-1.5v3H15v-3H9v3H7.5v-3H6v3H4.5v-3H3v-3H0v-3h3v-6h18Zm-15 0h1.5v-3H6Zm10.5 0H18v-3h-1.5z" />
+  </svg>
+);
+
 type Dependency = { name: string } & (
   | { icon: IconType; color: string }
   | { src: string }
@@ -59,7 +65,7 @@ const DEPENDENCIES: Dependency[] = [
   { name: "CI/CD", icon: GoWorkflow, color: "#0d1117" },
   { name: "Playwright", icon: SiPlaywright, color: "#2EAD33" },
   { name: "Cursor", icon: SiCursor, color: "#000000" },
-  { name: "Claude Code", src: "/claude-code.png" },
+  { name: "Claude Code", icon: SiClaudeCode, color: "#D97757" },
   { name: "Python", icon: SiPython, color: "#3776AB" },
 ];
 
