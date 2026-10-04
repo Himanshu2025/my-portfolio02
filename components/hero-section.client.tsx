@@ -24,8 +24,8 @@ export default function HeroSection() {
 
           <h1 className="mt-3 text-[clamp(2.25rem,4.2vw,3.5rem)] font-black leading-[1.02] tracking-[-0.035em] text-balance">
             Hi, I am Himanshu!{" "}
-            <span className="font-medium text-soft">
-              {current.role} @ {current.company}
+            <span className="block text-[0.78em] font-medium text-soft">
+              <span className="whitespace-nowrap">{current.role}</span> @ {current.company}
             </span>
           </h1>
 
