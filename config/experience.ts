@@ -23,7 +23,7 @@ export const experiences: Experience[] = [
     role: "Forward Deployed Engineer",
     dateRange: "Sep 2026 - Present",
     bullets: [],
-    tech: ["Snowflake", "dbt", "CI/CD", "Azure", "Terraform", "Playwright", "Claude Code", "TanStack", "React"],
+    tech: ["Snowflake", "dbt", "CI/CD", "Azure", "Terraform", "Playwright", "Claude Code", "TanStack", "React", "TypeScript"],
   },
   {
     company: "LaunchKey Lab",
