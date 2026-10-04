@@ -1,9 +1,11 @@
 import type { IconType } from "react-icons";
 
 import Image from "next/image";
+import { GoWorkflow } from "react-icons/go";
 import {
   SiAmazonaws,
   SiAuth0,
+  SiDbt,
   SiDocker,
   SiFastapi,
   SiGraphql,
@@ -16,6 +18,7 @@ import {
   SiPrisma,
   SiPython,
   SiReact,
+  SiSnowflake,
   SiSupabase,
   SiTerraform,
   SiTypescript,
@@ -42,6 +45,8 @@ const DEPENDENCIES: Dependency[] = [
   { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
   { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
   { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "Snowflake", icon: SiSnowflake, color: "#29B5E8" },
+  { name: "dbt", icon: SiDbt, color: "#FF694B" },
   { name: "FastAPI", icon: SiFastapi, color: "#009688" },
   { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
   { name: "Auth0", icon: SiAuth0, color: "#EB5424" },
@@ -51,6 +56,7 @@ const DEPENDENCIES: Dependency[] = [
   { name: "Azure", icon: SiMicrosoftazure, color: "#0078D4" },
   { name: "Docker", icon: SiDocker, color: "#2496ED" },
   { name: "Terraform", icon: SiTerraform, color: "#7B42BC" },
+  { name: "CI/CD", icon: GoWorkflow, color: "#0d1117" },
   { name: "Playwright", icon: SiPlaywright, color: "#2EAD33" },
   { name: "Cursor", icon: SiCursor, color: "#000000" },
   { name: "Claude Code", src: "/claude-code.png" },
