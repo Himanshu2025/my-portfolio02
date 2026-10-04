@@ -40,7 +40,7 @@ Personal portfolio for Himanshu Kulkarni, a Melbourne-based full-stack developer
 
 - Live products: Crack On (crackon.app), Rexfo (rexfo.app), WeatherTogether (weathertogether.info, password-protected).
 - Demos and source: CloudPose demo video, Mindzen demo and source, BirdTag source, Freelance BillingOps Swagger demo.
-- Experience: Flectēre, LaunchKey Lab, People For Nature, Monash University, AI SaaS startup (stealth), Jio Platforms. Details in `components/experience-section.tsx`.
+- Experience: Flectēre, LaunchKey Lab, People For Nature, Monash University, AI SaaS startup (stealth), Jio Platforms. Details in `config/experience.ts`.
 - Profile photo: `public/Image_01.jpeg` (optional in the redesign).
 - No testimonials, client logos, or press exist. Do not invent any.
 
