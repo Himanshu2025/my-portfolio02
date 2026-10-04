@@ -3,15 +3,21 @@
 import { useEffect, useState } from "react";
 import IntroLoader from "./intro-loader.client";
 
+import { experiences, versionOf } from "@/config/experience";
+
+const version = versionOf(experiences[0].dateRange);
+
 export default function FirstVisitLoader() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     try {
       const isHome = window.location.pathname === "/";
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const seen = sessionStorage.getItem("introSeen") === "1";
 
-      // Show loader on every visit/reload to the homepage
-      if (isHome) {
+      if (isHome && !reduced && !seen) {
+        sessionStorage.setItem("introSeen", "1");
         setShow(true);
       }
     } catch (e) {
@@ -23,8 +29,9 @@ export default function FirstVisitLoader() {
 
   return (
     <IntroLoader
-      tagline="building great web apps"
-      duration={2200}
+      duration={1000}
+      tagline={`installing himanshu@${version}`}
+      title={version}
       onComplete={() => setShow(false)}
     />
   );

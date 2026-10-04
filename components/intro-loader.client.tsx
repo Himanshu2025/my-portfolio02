@@ -5,10 +5,12 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function IntroLoader({
+  title = "Himanshu",
   tagline = "Full-stack developer",
   duration = 2400,
   onComplete,
 }: {
+  title?: string;
   tagline?: string;
   duration?: number;
   onComplete?: () => void;
@@ -28,7 +30,7 @@ export default function IntroLoader({
     setTimeout(() => {
       setPhase("done");
       onComplete?.();
-    }, 700);
+    }, 400);
   }, [phase, onComplete]);
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export default function IntroLoader({
     return null;
   }
 
-  const nameChars = "Himanshu".split("");
+  const nameChars = title.split("");
 
   return (
     <AnimatePresence>
@@ -92,11 +94,11 @@ export default function IntroLoader({
               <motion.span
                 key={i}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-4xl font-black tracking-[-0.035em] text-ink sm:text-6xl"
+                className="text-4xl font-black tracking-[-0.035em] text-tag sm:text-6xl"
                 initial={{ opacity: 0, y: 16 }}
                 transition={{
-                  duration: 0.4,
-                  delay: 0.2 + i * 0.06,
+                  duration: 0.3,
+                  delay: 0.05 + i * 0.04,
                   ease: "easeOut",
                 }}
               >
@@ -109,7 +111,7 @@ export default function IntroLoader({
             animate={{ opacity: 1 }}
             className="font-mono text-sm text-soft"
             initial={{ opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
           >
             {tagline}
           </motion.p>
@@ -118,7 +120,7 @@ export default function IntroLoader({
             animate={{ opacity: 1, scaleX: 1 }}
             className="w-48 sm:w-64"
             initial={{ opacity: 0, scaleX: 0.8 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
           >
             <div className="h-[3px] w-full overflow-hidden bg-line">
               <motion.div
