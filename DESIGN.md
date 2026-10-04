@@ -239,7 +239,7 @@ A single centred column (max 1240px) with side gutters of 20px, widening to 32px
 
 Sections stack vertically with 56px top and bottom padding and a 1px hairline rule between them; the hero sits slightly tighter at the top (40px, 48px from 640px). Inside sections, a heading plus subtitle is followed by 16–24px before content.
 
-- **Hero:** badge, display version, headline, then a two-column split from 768px (bio and actions at 1.4fr, photo card at 1fr). On mobile the email button spans both columns of a two-up action grid above GitHub and LinkedIn.
+- **Hero:** badge, then a two-column split from 768px: display version, headline, bio and actions at 1.1fr on the left, and the photo card at 1fr on the right, its top aligned with the top of the version. On mobile the email button spans both columns of a two-up action grid above GitHub and LinkedIn.
 - **Release timeline:** a full-width strip with 40px vertical padding and a hairline below it; six equal flexible items with a 150px minimum, scrolling horizontally (edge to edge on mobile) when they do not fit.
 - **Dependencies:** an auto-fill grid of cells with a 168px minimum width, drawn as a continuous hairline lattice.
 - **Changelog:** each role is a row with a 180px left column (version over mono dates) and a fluid right column from 768px, stacked on mobile, divided by hairlines.
@@ -277,7 +277,7 @@ Blunt rectangular blocks, set in Semibold Schibsted Grotesk, with colour-only st
 
 ### Cards / Containers
 - **Package card (projects):** square corners, Paper background, 1.5px Ink stroke, 22px padding, a 12px vertical stack: Black project title with the Published badge opposite, a Medium subtitle, a Soft Graphite description, a mono tech line, an optional `open <url>` command line (Wash fill, mono, with `--password` in Soft Graphite), then text links pinned to the bottom.
-- **Photo card (hero):** a 1px Hairline frame around a square photo, with a key/value list below it: Soft Graphite labels (Maintainer, Region, Current) and mono values.
+- **Photo card (hero):** a 1px Hairline frame around a 4:5 portrait photo, with a key/value list below it: Soft Graphite labels (Maintainer, Region) and mono values.
 - **Shadow Strategy:** none (see Elevation & Depth).
 
 ### Navigation
