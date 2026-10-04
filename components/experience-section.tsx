@@ -10,7 +10,7 @@ export default function ExperienceSection() {
       <p className="mt-1.5 text-soft">Roles, responsibilities, and impact across companies and projects.</p>
 
       <div className="mt-4">
-        {experiences.slice(1).map((e) => (
+        {experiences.map((e) => (
           <WorkExperienceCard key={e.company} work={e} />
         ))}
       </div>

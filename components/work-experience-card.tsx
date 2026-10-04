@@ -35,19 +35,21 @@ export default function WorkExperienceCard({ work }: { work: Experience }) {
           <span className="font-medium text-soft"> · {work.role}</span>
         </h3>
 
-        <ul className="mt-4 max-w-[70ch]">
-          {work.bullets.map((b, i) => (
-            <li key={i} className="relative py-1.5 pl-[30px] leading-relaxed text-ink">
-              <span
-                aria-hidden="true"
-                className="absolute left-0 top-2 grid h-[22px] w-5 place-items-center bg-added-wash font-mono text-sm font-bold text-added"
-              >
-                +
-              </span>
-              {highlightFigures(b)}
-            </li>
-          ))}
-        </ul>
+        {work.bullets.length > 0 && (
+          <ul className="mt-4 max-w-[70ch]">
+            {work.bullets.map((b, i) => (
+              <li key={i} className="relative py-1.5 pl-[30px] leading-relaxed text-ink">
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-2 grid h-[22px] w-5 place-items-center bg-added-wash font-mono text-sm font-bold text-added"
+                >
+                  +
+                </span>
+                {highlightFigures(b)}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </article>
   );

@@ -12,7 +12,7 @@ export default function ReleaseTimeline() {
 
           return (
             <li key={version} className="min-w-[150px] flex-1">
-              <a className="group block pr-4" href={current ? "#home" : `#release-${version}`}>
+              <a className="group block pr-4" href={`#release-${version}`}>
                 <span className="relative block h-3">
                   <span aria-hidden="true" className="absolute inset-x-0 top-1/2 h-px bg-line" />
                   <span
