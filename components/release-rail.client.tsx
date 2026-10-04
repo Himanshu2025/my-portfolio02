@@ -21,9 +21,11 @@ export default function ReleaseRail() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
+        const top = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
 
-        if (visible.length) setActive(`#${visible[0].target.id}`);
+        if (top) setActive(`#${top.target.id}`);
       },
       { rootMargin: "-30% 0px -60% 0px" },
     );
