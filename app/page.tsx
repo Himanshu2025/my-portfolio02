@@ -1,30 +1,30 @@
 /*
-  THESIS: The portfolio is a magazine cover story about Himanshu; it refuses the dark card-grid developer template.
-  OWN-WORLD: Cover yellow (#ffd500), ink (#0b0b0b), paper white. Archivo across its width axis: expanded black for
-  cover lines and titles, normal width for body, condensed bold caps for datelines and controls. Thick 3px ink rules,
-  square corners, no cards, no icons.
-  STORY: A recruiter or founder learns who Himanshu is and how to reach him on the cover, reads the experience as
-  feature chapters, sees shipped work in the contents spread, and emails him from the yellow close.
-  FIRST VIEWPORT: Full-bleed yellow. Dateline rule on top; "HI, I AM / HIMANSHU!" at up to 8rem across all columns,
-  overlapping the portrait on the right; bio deck, email call-out, and the typographic tech list bottom left.
-  FORM: Cover Story (business-magazine feature), candidate 4 of 7, seed 8df069ef; staging: cover, chapters, contents, close.
+  THESIS: Himanshu's career reads as a product's release notes; it refuses the dark card-grid developer template.
+  OWN-WORLD: White paper, ink #0d1117, release-tag blue #2346ff, added-green #0a7f3f. Schibsted Grotesk for prose
+  and headings, JetBrains Mono only for versions, dates, and metadata. Hairline 1px rules, square corners, a sticky
+  version rail, "+" change markers, full-colour tech logos as the dependency grid.
+  STORY: A recruiter or founder lands on the latest release (who, role, how to email), scans dependencies, reads the
+  changelog of roles with highlighted figures, opens shipped packages, and emails from the closing block.
+  FIRST VIEWPORT: Version rail left; "Latest release" badge, v2026.09 huge in tag blue, "Hi, I am Himanshu!" with the
+  current role, bio, email as the primary black button, and the photo card with mono metadata on the right.
+  FORM: Release Notes (software changelog), chosen by the user from prototypes C and D.
 */
-import { siteConfig } from "@/config/site";
 import HeroSection from "@/components/hero-section.client";
 import ProjectsSection from "@/components/projects-section";
 import ExperienceSection from "@/components/experience-section";
 import ContactSection from "@/components/contact-section";
+import ReleaseRail from "@/components/release-rail.client";
 
 export default function Home() {
   return (
-    <>
-      <HeroSection
-        githubUrl={siteConfig.links.github}
-        linkedinUrl={siteConfig.links.linkedin}
-      />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ContactSection />
-    </>
+    <div className="mx-auto grid max-w-[1240px] gap-14 px-5 sm:px-8 lg:grid-cols-[220px_minmax(0,1fr)]">
+      <ReleaseRail />
+      <div className="min-w-0 pb-24">
+        <HeroSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <ContactSection />
+      </div>
+    </div>
   );
 }
