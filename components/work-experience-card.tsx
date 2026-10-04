@@ -35,6 +35,8 @@ export default function WorkExperienceCard({ work }: { work: Experience }) {
           <span className="font-medium text-soft"> · {work.role}</span>
         </h3>
 
+        {work.tech?.length ? <p className="mt-3 font-mono text-sm text-soft">{work.tech.join(" · ")}</p> : null}
+
         {work.bullets.length > 0 && (
           <ul className="mt-4 max-w-[70ch]">
             {work.bullets.map((b, i) => (

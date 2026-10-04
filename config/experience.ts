@@ -4,6 +4,7 @@ export type Experience = {
   role: string;
   dateRange: string;
   bullets: string[];
+  tech?: string[];
 };
 
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -22,6 +23,7 @@ export const experiences: Experience[] = [
     role: "Forward Deployed Engineer",
     dateRange: "Sep 2026 - Present",
     bullets: [],
+    tech: ["Snowflake", "dbt", "CI/CD", "Azure", "Terraform", "Playwright", "Claude Code", "TanStack", "React"],
   },
   {
     company: "LaunchKey Lab",
