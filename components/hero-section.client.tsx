@@ -16,7 +16,8 @@ export default function HeroSection() {
       </p>
 
       <p className="mt-5 text-[clamp(4rem,11vw,9.25rem)] font-black leading-[0.9] tracking-[-0.04em] text-tag">
-        {versionOf(current.dateRange)}
+        <span className="mr-[0.06em]">v</span>
+        {versionOf(current.dateRange).slice(1)}
       </p>
 
       <h1 className="mt-3 text-[clamp(2.25rem,5vw,4rem)] font-black leading-[1.02] tracking-[-0.035em] text-balance">
