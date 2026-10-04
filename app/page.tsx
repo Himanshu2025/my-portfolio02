@@ -13,6 +13,7 @@ import HeroSection from "@/components/hero-section.client";
 import ProjectsSection from "@/components/projects-section";
 import ExperienceSection from "@/components/experience-section";
 import ContactSection from "@/components/contact-section";
+import DependenciesSection from "@/components/dependencies-section";
 import ReleaseRail from "@/components/release-rail.client";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <ReleaseRail />
       <div className="min-w-0 pb-24">
         <HeroSection />
+        <DependenciesSection />
         <ExperienceSection />
         <ProjectsSection />
         <ContactSection />
