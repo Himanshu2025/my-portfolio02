@@ -16,7 +16,7 @@ export default function ReleaseRail() {
 
   useEffect(() => {
     const targets = releases
-      .map((r) => document.querySelector<HTMLElement>(r.href))
+      .map((r) => document.getElementById(r.href.slice(1)))
       .filter((el): el is HTMLElement => el !== null);
 
     const observer = new IntersectionObserver(
@@ -47,7 +47,7 @@ export default function ReleaseRail() {
               )}
               href={r.href}
             >
-              <span className="font-mono font-bold">{r.version}</span>
+              <span className="font-extrabold tabular-nums">{r.version}</span>
               <span className={clsx("truncate", active === r.href ? "text-[#dfe5ff]" : "text-soft")}>
                 {r.label}
               </span>

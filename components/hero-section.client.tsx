@@ -15,7 +15,7 @@ export default function HeroSection() {
         Latest release
       </p>
 
-      <p className="mt-5 font-mono text-[clamp(4rem,11vw,9.25rem)] font-bold leading-[0.9] tracking-[-0.05em] text-tag">
+      <p className="mt-5 text-[clamp(4rem,11vw,9.25rem)] font-black leading-[0.9] tracking-[-0.04em] text-tag">
         {versionOf(current.dateRange)}
       </p>
 
