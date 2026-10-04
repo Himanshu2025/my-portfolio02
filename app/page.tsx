@@ -4,10 +4,11 @@
   headings, and version tags (Black in the hero, extrabold elsewhere); JetBrains Mono only for dates and metadata.
   Hairline 1px rules, square corners, a horizontal release timeline under the hero, "+" change markers, full-colour tech logos as the
   dependency grid.
-  STORY: A recruiter or founder lands on the latest release (who, role, how to email), scans dependencies, reads the
-  changelog of roles with highlighted figures, opens shipped packages, and emails from the closing block.
+  STORY: A recruiter or founder lands on the latest release (who, role, where to find him), scans dependencies, reads
+  the changelog of roles with highlighted figures, opens shipped packages, and reaches out via GitHub or LinkedIn.
   FIRST VIEWPORT: "Latest release" badge, v2026.09 huge in tag blue, "Hi, I am Himanshu!" with the
-  current role, bio, email as the primary black button, and the photo card with mono metadata on the right.
+  current role, bio, GitHub as the primary black button, and the photo card with mono metadata on the right.
+  No email address is shown anywhere until a contact method is chosen.
   FORM: Release Notes (software changelog). User-selected prototype D after rejecting the rolled Cover Story; no seed key.
 */
 import HeroSection from "@/components/hero-section.client";

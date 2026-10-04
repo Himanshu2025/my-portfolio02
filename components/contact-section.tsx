@@ -1,10 +1,12 @@
+import { SiGithub, SiLinkedin } from "react-icons/si";
+
 import { siteConfig } from "@/config/site";
 
 const ghostClass =
-  "inline-flex h-10 items-center border-[1.5px] border-ink px-4 text-sm font-semibold transition-colors hover:bg-wash";
+  "inline-flex h-12 items-center gap-2 border-[1.5px] border-ink px-5 text-[15px] font-semibold transition-colors hover:bg-wash";
 
 export default function ContactSection() {
-  const { email, github, linkedin, resume } = siteConfig.links;
+  const { github, linkedin, resume } = siteConfig.links;
 
   return (
     <section aria-labelledby="contact-heading" className="scroll-mt-14 pt-14" id="contact">
@@ -12,21 +14,16 @@ export default function ContactSection() {
         Contact
       </h2>
 
-      <a
-        className="mt-6 block w-fit max-w-full break-words text-[clamp(1.75rem,4vw,3rem)] font-extrabold leading-tight tracking-[-0.03em] underline decoration-2 underline-offset-[6px] transition-colors hover:text-tag"
-        href={`mailto:${email}`}
-      >
-        {email}
-      </a>
-
-      <ul className="mt-8 flex flex-wrap gap-3">
+      <ul className="mt-6 flex flex-wrap gap-3">
         <li>
           <a className={ghostClass} href={github} rel="noreferrer" target="_blank">
+            <SiGithub aria-hidden="true" className="h-[18px] w-[18px]" />
             GitHub
           </a>
         </li>
         <li>
           <a className={ghostClass} href={linkedin} rel="noreferrer" target="_blank">
+            <SiLinkedin aria-hidden="true" className="h-[18px] w-[18px] text-[#0A66C2]" />
             LinkedIn
           </a>
         </li>

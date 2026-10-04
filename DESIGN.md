@@ -14,13 +14,13 @@ colors:
 typography:
   display:
     fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: "clamp(4rem, 11vw, 9.25rem)"
+    fontSize: "clamp(4rem, 9vw, 8.5rem)"
     fontWeight: 900
     lineHeight: 0.9
     letterSpacing: "-0.04em"
   headline:
     fontFamily: "Schibsted Grotesk, sans-serif"
-    fontSize: "clamp(2.25rem, 5vw, 4rem)"
+    fontSize: "clamp(2.25rem, 4.2vw, 3.5rem)"
     fontWeight: 900
     lineHeight: 1.02
     letterSpacing: "-0.035em"
@@ -52,6 +52,11 @@ typography:
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.625
+  button:
+    fontFamily: "Schibsted Grotesk, sans-serif"
+    fontSize: "15px"
+    fontWeight: 600
+    lineHeight: 1.4
   label:
     fontFamily: "Schibsted Grotesk, sans-serif"
     fontSize: "0.875rem"
@@ -78,7 +83,7 @@ components:
   button-primary:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.paper}"
-    typography: "{typography.label}"
+    typography: "{typography.button}"
     rounded: "{rounded.none}"
     height: "48px"
     padding: "0 20px"
@@ -88,19 +93,12 @@ components:
   button-ghost:
     backgroundColor: "{colors.paper}"
     textColor: "{colors.ink}"
-    typography: "{typography.label}"
+    typography: "{typography.button}"
     rounded: "{rounded.none}"
     height: "48px"
     padding: "0 20px"
   button-ghost-hover:
     backgroundColor: "{colors.wash}"
-  button-ghost-compact:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    height: "40px"
-    padding: "0 16px"
   button-resume:
     backgroundColor: "{colors.tag}"
     textColor: "{colors.paper}"
@@ -186,7 +184,7 @@ The direction explicitly rejected the dark card-grid developer template and a ro
 A paper-and-ink documentation palette with two semantic accents: release blue marks versions and active state, added green marks what shipped.
 
 ### Primary
-- **Release Tag Blue** (`tag`): Version numbers (hero, the current release on the timeline, changelog, loader), the current release's filled timeline marker, hover on past timeline versions, the Resume button, project text links, the focus outline, the loader progress bar, and the hover state of the primary email button and the contact email link.
+- **Release Tag Blue** (`tag`): Version numbers (hero, the current release on the timeline, changelog, loader), the current release's filled timeline marker, hover on past timeline versions, the Resume button, project text links, the focus outline, the loader progress bar, and the hover state of the primary GitHub button.
 - **Tag Wash** (`tag-wash`): The highlight behind figures in changelog bullets (percentages, "N+", "halved") and the text selection colour. Always paired with Release Tag Blue text.
 
 ### Secondary
@@ -195,7 +193,7 @@ A paper-and-ink documentation palette with two semantic accents: release blue ma
 
 ### Neutral
 - **Paper** (`paper`): The page, the loader backdrop, and text on ink and blue fills.
-- **Ink** (`ink`): Body text, headings, the sticky navbar band, the primary email button, the 1.5px strokes on ghost buttons and package cards, the 2px outline of past-release timeline markers (filling solid on hover). Also the browser theme colour.
+- **Ink** (`ink`): Body text, headings, the sticky navbar band, the primary GitHub button, the 1.5px strokes on ghost buttons and package cards, the 2px outline of past-release timeline markers (filling solid on hover). Also the browser theme colour.
 - **Soft Graphite** (`soft`): Secondary text: the role half of headlines, bios and descriptions, section subtitles, metadata labels, dates, tech lines, the footer.
 - **Hairline** (`line`): Every 1px rule: section dividers, the dependency grid cells, changelog row dividers, the photo card frame, the footer rule, the loader track.
 - **Wash** (`wash`): Hover fill for ghost buttons, and the background of the `open <url>` command line.
@@ -203,7 +201,7 @@ A paper-and-ink documentation palette with two semantic accents: release blue ma
 ### Named Rules
 **The Semantic Accent Rule.** Blue means "version or current location"; green means "added or shipped". Neither is used decoratively, and they are never swapped.
 
-**The Wash Pair Rule.** A coloured mark on paper is coloured text on its own wash (`tag` on `tag-wash`, `added` on `added-wash`). The only solid accent fills are the current release's 12px timeline marker, the Resume button, the email button's hover state, the loader bar, and the green status dot.
+**The Wash Pair Rule.** A coloured mark on paper is coloured text on its own wash (`tag` on `tag-wash`, `added` on `added-wash`). The only solid accent fills are the current release's 12px timeline marker, the Resume button, the GitHub button's hover state, the loader bar, and the green status dot.
 
 **The Small Marks Rule.** Colour lives in marks (badges, markers, highlighted figures, the current timeline marker), never in section-sized fields. The ink navbar is the one full-width dark band.
 
@@ -223,7 +221,8 @@ A paper-and-ink documentation palette with two semantic accents: release blue ma
 - **Version tag** (`version-tag`): Changelog version numbers in Release Tag Blue. The release timeline uses the same Extrabold and tracking at 18px.
 - **Lead** (`lead`): The hero bio, Soft Graphite, rising to 21px from 640px, capped at 40ch, with the key phrase in Semibold Ink.
 - **Body** (`body`): Changelog bullets in Ink, capped at 70ch. Project descriptions use the same size in Soft Graphite at 1.55 line height.
-- **Label** (`label`): Buttons, nav links, text links, badges (12–13px Semibold), dependency names (15px Medium).
+- **Button** (`button`): Hero and contact buttons, and the navbar name in Extrabold. Dependency names use the same 15px in Medium.
+- **Label** (`label`): Nav links, text links, the Resume button, badges (12–13px Semibold).
 - **Mono** (`mono`): Dates, the photo card's key/value values, project tech lists joined with " · ", the `open <url>` line, the footer, and the loader tagline.
 
 ### Named Rules
@@ -239,7 +238,7 @@ A single centred column (max 1240px) with side gutters of 20px, widening to 32px
 
 Sections stack vertically with 56px top and bottom padding and a 1px hairline rule between them; the hero sits slightly tighter at the top (40px, 48px from 640px). Inside sections, a heading plus subtitle is followed by 16–24px before content.
 
-- **Hero:** badge, then a two-column split from 768px: display version, headline, bio and actions at 1.1fr on the left, and the photo card at 1fr on the right, its top aligned with the top of the version. On mobile the email button spans both columns of a two-up action grid above GitHub and LinkedIn.
+- **Hero:** badge, then a two-column split from 768px: display version, headline, bio and actions at 1.1fr on the left, and the photo card at 1fr on the right, its top aligned with the top of the version. On mobile GitHub and LinkedIn sit side by side in a two-up action grid.
 - **Release timeline:** a full-width strip with 40px vertical padding and a hairline below it; six equal flexible items with a 150px minimum, scrolling horizontally (edge to edge on mobile) when they do not fit.
 - **Dependencies:** an auto-fill grid of cells with a 168px minimum width, drawn as a continuous hairline lattice.
 - **Changelog:** each role is a row with a 180px left column (version over mono dates) and a fluid right column from 768px, stacked on mobile, divided by hairlines.
@@ -265,8 +264,8 @@ Square corners throughout (`rounded.none`): buttons, badges, cards, the photo fr
 ### Buttons
 Blunt rectangular blocks, set in Semibold Schibsted Grotesk, with colour-only state changes on a short transition.
 - **Shape:** square corners (0px).
-- **Primary (email):** Ink fill with Paper text, 48px tall, 20px side padding, 15px Semibold, prefixed with an envelope glyph and showing the full address. It is the only primary action on the page; on hover it fills Release Tag Blue.
-- **Ghost:** Paper with a 1.5px Ink stroke, Ink text, 48px tall in the hero and 40px (14px text, 16px padding) in the contact block; hover fills with Wash.
+- **Primary (GitHub):** Ink fill with Paper text, 48px tall, 20px side padding, 15px Semibold, led by an 18px GitHub mark. It is the only primary action on the page; on hover it fills Release Tag Blue.
+- **Ghost:** Paper with a 1.5px Ink stroke, Ink text, 48px tall, 20px side padding; hover fills with Wash. LinkedIn carries an 18px LinkedIn mark in its brand blue (#0A66C2), GitHub an Ink mark.
 - **Resume (navbar):** a solid Release Tag Blue block, 36px tall, Paper text, darkening slightly on hover. The only blue button.
 - **Text links (projects):** Release Tag Blue Semibold text followed by a `↗` arrow, underlined on hover with a 4px offset, with screen-reader text naming the project and the new tab.
 - **Focus:** every focusable element gets a 2px Release Tag Blue outline offset by 3px.
@@ -281,7 +280,7 @@ Blunt rectangular blocks, set in Semibold Schibsted Grotesk, with colour-only st
 - **Shadow Strategy:** none (see Elevation & Depth).
 
 ### Navigation
-- **Navbar:** a sticky 56px Ink band spanning the viewport, its contents aligned to the 1240px container. The name sits on the left in 15px Extrabold Paper. Section links and GitHub/LinkedIn are 14px in a light grey that turns Paper on hover, and the blue Resume button sits at the far right. Below 768px everything collapses behind a plain "Menu" / "Close" text button that opens a full-width panel of 18px Semibold links above a hairline-divided row of external links.
+- **Navbar:** a sticky 56px Ink band spanning the viewport, its contents aligned to the 1240px container. The name sits on the left in 15px Extrabold Paper. Section links and GitHub/LinkedIn (each led by a 16px monochrome brand mark) are 14px in a light grey that turns Paper on hover, and the blue Resume button sits at the far right. Below 768px everything collapses behind a plain "Menu" / "Close" text button that opens a full-width panel of 18px Semibold links above a hairline-divided row of external links.
 
 ### Release Timeline (signature)
 A static, non-sticky strip directly under the hero, labelled "Releases" for assistive tech. Each of the six releases is a link to its changelog entry (the current one links to the hero). Each link has a 1px Hairline track with a 12px square marker at its start, the version in 18px Extrabold below, and the company's short name in 14px Soft Graphite. The current release has a solid Release Tag Blue marker and a blue version. Past releases have a 2px Ink outline on Paper; on hover the marker fills Ink and the version turns blue. It does not track scroll position or show an active state; it is a map of versions, not a scrollspy.
@@ -290,10 +289,10 @@ A static, non-sticky strip directly under the hero, labelled "Releases" for assi
 Each prior role is a release. The left column holds the version in Release Tag Blue Extrabold over its mono date range; the right column holds the company and role heading and a list of bullets. Each bullet is led by a 20×22px Added Wash square containing a bold mono Added Green `+`. Figures inside the copy (percentages, "N+", "halved") are automatically highlighted as Release Tag Blue Semibold on Tag Wash. Entries are separated by hairlines, and each carries a `release-vYYYY.MM` anchor for the release timeline.
 
 ### Dependency Grid (signature)
-A manifest of the stack: a hairline lattice of cells, each holding a 22px full-colour brand logo (Simple Icons SVGs in their brand colours, Cursor included as an inline black SVG, plus PNG marks for TanStack and Claude Code) and the name in 15px Medium. Logos are always shown in full colour; they are the one place third-party colour enters the page.
+A manifest of the stack: a hairline lattice of cells, each holding a 22px full-colour brand logo (Simple Icons SVGs in their brand colours, Cursor included as an inline black SVG, plus PNG marks for TanStack and Claude Code; CI/CD, which has no brand, uses a generic Ink workflow glyph) and the name in 15px Medium. Logos are always shown in full colour; they are the one place third-party colour enters the page.
 
 ### Contact Block
-The closing release note: the email address set at `clamp(1.75rem, 4vw, 3rem)` Extrabold with a 2px underline offset 6px, turning Release Tag Blue on hover, followed by compact ghost buttons for GitHub, LinkedIn, and Resume, and a mono Soft Graphite footer above a hairline.
+The closing release note: the section heading followed by ghost buttons for GitHub and LinkedIn (with their marks) and Resume, then a mono Soft Graphite footer above a hairline. No email address is shown anywhere on the site.
 
 ### Install Loader (signature motion)
 The single authored motion moment. On the first visit to the home page in a session, and never when reduced motion is requested, a Paper screen spells the current version in Black Release Tag Blue character by character (rising 16px, staggered 40ms), shows the mono tagline `installing himanshu@<version>`, and fills a 3px Release Tag Blue bar on a Hairline track over about one second, then fades and lifts away. No other element animates on entry.
@@ -303,7 +302,7 @@ The single authored motion moment. On the first visit to the home page in a sess
 ### Do:
 - **Do** set every version tag in Schibsted Grotesk: Black (900) in the hero and loader, Extrabold (800) elsewhere, in Release Tag Blue.
 - **Do** keep JetBrains Mono to dates and metadata: date ranges, key/value values, tech lists, the `open <url>` line, the footer.
-- **Do** make the email address (hkulkarni927@gmail.com) the single primary action: the Ink button in the hero and the large link in the contact block.
+- **Do** keep GitHub as the single primary (Ink) action in the hero; LinkedIn and Resume are ghost buttons.
 - **Do** separate sections and grid cells with 1px Hairline rules, and outline interactive or openable objects with a 1.5px Ink stroke.
 - **Do** pair every coloured mark with its wash: `tag` on `tag-wash`, `added` on `added-wash`.
 - **Do** show tech as full-colour logos in the Dependencies grid.
@@ -317,6 +316,7 @@ The single authored motion moment. On the first visit to the home page in a sess
 - **Don't** paint sections or panels in colour fields; colour stays in small semantic marks.
 - **Don't** add shadows, gradients, glows, or blurs.
 - **Don't** use blue and green interchangeably: blue is version and location, green is added and shipped.
+- **Don't** show an email address anywhere on the site until a contact method is chosen.
 - **Don't** add testimonials, client logos, press, or any invented claims or figures.
 - **Don't** add entrance animations beyond the once-per-session install loader.
 - **Don't** fall back to the dark card-grid developer-portfolio template.

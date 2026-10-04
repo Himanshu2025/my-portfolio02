@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import clsx from "clsx";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 
 import { siteConfig } from "@/config/site";
 
-const linkClass = "text-sm text-[#c9d1d9] transition-colors hover:text-paper";
+const linkClass = "inline-flex items-center gap-1.5 text-sm text-[#c9d1d9] transition-colors hover:text-paper";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,11 +36,13 @@ export const Navbar = () => {
         <ul className="hidden items-center gap-5 md:flex">
           <li>
             <a className={linkClass} href={github} rel="noreferrer" target="_blank">
+              <SiGithub aria-hidden="true" className="h-4 w-4" />
               GitHub
             </a>
           </li>
           <li>
             <a className={linkClass} href={linkedin} rel="noreferrer" target="_blank">
+              <SiLinkedin aria-hidden="true" className="h-4 w-4" />
               LinkedIn
             </a>
           </li>
@@ -77,9 +80,11 @@ export const Navbar = () => {
           ))}
           <li className="mt-2 flex flex-wrap gap-x-6 gap-y-3 border-t border-paper/15 pt-4 pb-2">
             <a className={linkClass} href={github} rel="noreferrer" target="_blank">
+              <SiGithub aria-hidden="true" className="h-4 w-4" />
               GitHub
             </a>
             <a className={linkClass} href={linkedin} rel="noreferrer" target="_blank">
+              <SiLinkedin aria-hidden="true" className="h-4 w-4" />
               LinkedIn
             </a>
             <a className={linkClass} href={resume} rel="noreferrer" target="_blank">

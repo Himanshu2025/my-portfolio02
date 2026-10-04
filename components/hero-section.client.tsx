@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SiGithub, SiLinkedin } from "react-icons/si";
 
 import { siteConfig } from "@/config/site";
 import { experiences, versionOf } from "@/config/experience";
@@ -6,7 +7,7 @@ import { experiences, versionOf } from "@/config/experience";
 const current = experiences[0];
 
 export default function HeroSection() {
-  const { email, github, linkedin } = siteConfig.links;
+  const { github, linkedin } = siteConfig.links;
 
   return (
     <section className="scroll-mt-14 border-b border-line pb-14 pt-10 sm:pt-12" id="home">
@@ -37,26 +38,21 @@ export default function HeroSection() {
 
           <div className="mt-7 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
             <a
-              className="col-span-2 inline-flex h-12 items-center justify-center gap-2 bg-ink px-5 text-[15px] font-semibold text-paper transition-colors hover:bg-tag"
-              href={`mailto:${email}`}
-            >
-              <span aria-hidden="true">✉</span>
-              {email}
-            </a>
-            <a
-              className="inline-flex h-12 items-center justify-center border-[1.5px] border-ink px-5 text-[15px] font-semibold transition-colors hover:bg-wash"
+              className="inline-flex h-12 items-center justify-center gap-2 bg-ink px-5 text-[15px] font-semibold text-paper transition-colors hover:bg-tag"
               href={github}
               rel="noreferrer"
               target="_blank"
             >
+              <SiGithub aria-hidden="true" className="h-[18px] w-[18px]" />
               GitHub
             </a>
             <a
-              className="inline-flex h-12 items-center justify-center border-[1.5px] border-ink px-5 text-[15px] font-semibold transition-colors hover:bg-wash"
+              className="inline-flex h-12 items-center justify-center gap-2 border-[1.5px] border-ink px-5 text-[15px] font-semibold transition-colors hover:bg-wash"
               href={linkedin}
               rel="noreferrer"
               target="_blank"
             >
+              <SiLinkedin aria-hidden="true" className="h-[18px] w-[18px] text-[#0A66C2]" />
               LinkedIn
             </a>
           </div>

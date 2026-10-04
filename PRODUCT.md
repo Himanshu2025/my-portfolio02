@@ -17,7 +17,7 @@ Both arrive from LinkedIn, a resume, or a direct link, usually on a laptop betwe
 
 ## Product Purpose
 
-Personal portfolio for Himanshu Kulkarni, a Melbourne-based full-stack developer and forward deployed engineer. It exists to turn a visit into a conversation. Success is a visitor emailing hkulkarni927@gmail.com.
+Personal portfolio for Himanshu Kulkarni, a Melbourne-based full-stack developer and forward deployed engineer. It exists to turn a visit into a conversation. Success is a visitor reaching out. The contact method is still to be decided; until then, no email address appears on the site and GitHub and LinkedIn are the routes.
 
 ## Positioning
 
@@ -46,7 +46,7 @@ Personal portfolio for Himanshu Kulkarni, a Melbourne-based full-stack developer
 
 ## Product Principles
 
-1. Every visit should make emailing Himanshu obvious and easy.
+1. Every visit should make reaching Himanshu obvious and easy.
 2. Show shipped work, not adjectives: live links and concrete outcomes lead.
 3. Respect a scanning reader: role, stack, and proof readable in seconds.
 4. The site itself should look built with care, as evidence of the craft it claims.
